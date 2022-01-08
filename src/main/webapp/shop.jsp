@@ -168,7 +168,7 @@ URL: https://www.freshdesignweb.com/ustora/
                     <div class="product-upper">
                         <img src="img/products/iphone_11_pro-removebg-preview.png" alt="" height="195" width="243">
                     </div>
-                    <h2><a href="">iphone 11</a></h2>
+                    <h2><a href="">iphone 11 Pro</a></h2>
                     <div class="product-carousel-price">
                         <ins>€639.00</ins> <del></del>
                     </div>
@@ -228,9 +228,9 @@ URL: https://www.freshdesignweb.com/ustora/
                     <div class="product-upper">
                         <img src="img/products/s21ultra-removebg-preview.png" alt="" height="195" width="243">
                     </div>
-                    <h2><a href="">Samsung S21 5G</a></h2>
+                    <h2><a href="">Samsung S21 Ultra</a></h2>
                     <div class="product-carousel-price">
-                        <ins>€699.00</ins> <del></del>
+                        <ins>€1279.00</ins> <del></del>
                     </div>
                     <br>
                     <div class="product-option-shop">
@@ -243,7 +243,7 @@ URL: https://www.freshdesignweb.com/ustora/
                     <div class="product-upper">
                         <img src="img/products/xiaomi11ultra-removebg-preview.png" alt="" height="195" width="243">
                     </div>
-                    <h2><a href="">Xiaomi MI 11 ULtra</a></h2>
+                    <h2><a href="">Xiaomi 11 Ultra</a></h2>
                     <div class="product-carousel-price">
                         <ins>€1599.00</ins> <del></del>
                     </div>
