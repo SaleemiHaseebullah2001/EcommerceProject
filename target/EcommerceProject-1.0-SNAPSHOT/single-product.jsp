@@ -148,6 +148,7 @@ URL: https://www.freshdesignweb.com/ustora/
   <div class="zigzag-bottom"></div>
   <div class="container">
     <div class="row">
+      <!--
       <div class="col-md-4">
         <div class="single-sidebar">
           <h2 class="sidebar-title">Search Products</h2>
@@ -200,20 +201,20 @@ URL: https://www.freshdesignweb.com/ustora/
           </ul>
         </div>
       </div>
-
+      -->
       <div class="col-md-8">
         <div class="product-content-right">
           <div class="product-breadcroumb">
             <a href="">Home</a>
-            <a href="">Category Name</a>
-            <a href="">Sony Smart TV - 2015</a>
+            <a href="">Smartphone</a>
+            <a href="">Samsung S21 Ultra</a>
           </div>
 
           <div class="row">
             <div class="col-sm-6">
               <div class="product-images">
                 <div class="product-main-img">
-                  <img src="img/product-2.jpg" alt="">
+                  <img src="img/products/s21ultra-removebg-preview.png" alt="">
                 </div>
 
                 <div class="product-gallery">
@@ -238,9 +239,9 @@ URL: https://www.freshdesignweb.com/ustora/
                   <button class="add_to_cart_button" type="submit">Add to cart</button>
                 </form>
 
-                <div class="product-inner-category">
+                <!--div class="product-inner-category">
                   <p>Category: <a href="">Summer</a>. Tags: <a href="">awesome</a>, <a href="">best</a>, <a href="">sale</a>, <a href="">shoes</a>. </p>
-                </div>
+                </div-->
 
                 <div role="tabpanel">
                   <ul class="product-tab" role="tablist">

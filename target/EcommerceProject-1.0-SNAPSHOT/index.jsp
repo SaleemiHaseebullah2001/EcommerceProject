@@ -38,11 +38,11 @@
             <div class="col-md-8">
                 <div class="user-menu">
                     <ul>
-                        <li><a href="#"><i class="fa fa-user"></i> My Account</a></li>
+                        <li><a href="profile.jsp"><i class="fa fa-user"></i> My Account</a></li>
                         <li><a href="#"><i class="fa fa-heart"></i> Wishlist</a></li>
                         <li><a href="cart.jsp"><i class="fa fa-user"></i> My Cart</a></li>
                         <li><a href="checkout.jsp"><i class="fa fa-user"></i> Checkout</a></li>
-                        <li><a href="#"><i class="fa fa-user"></i> Login</a></li>
+                        <li><a href="login.jsp"><i class="fa fa-user"></i> Login</a></li>
                     </ul>
                 </div>
             </div>
@@ -79,7 +79,7 @@
         <div class="row">
             <div class="col-sm-6">
                 <div class="logo">
-                    <h1><a href="./"><img src="img/logo.png" alt=""></a></h1>
+                    <h1><a href="./"><img src="img/Cells_House_LogoWeb.png" alt=""></a></h1>
                 </div>
             </div>
 
@@ -210,10 +210,10 @@
                                 </div>
                             </div>
 
-                            <h2><a href="single-product.jsp">Samsung Galaxy s5- 2015</a></h2>
+                            <h2><a href="single-product.jsp">Iphone 13</a></h2>
 
                             <div class="product-carousel-price">
-                                <ins>$700.00</ins> <del>$100.00</del>
+                                <ins>€949.00</ins>
                             </div>
                         </div>
                         <div class="single-product">
@@ -225,9 +225,9 @@
                                 </div>
                             </div>
 
-                            <h2>Nokia Lumia 1320</h2>
+                            <h2>Iphone 12</h2>
                             <div class="product-carousel-price">
-                                <ins>$899.00</ins> <del>$999.00</del>
+                                <ins>€889.00</ins>
                             </div>
                         </div>
                         <div class="single-product">
@@ -239,10 +239,10 @@
                                 </div>
                             </div>
 
-                            <h2>LG Leon 2015</h2>
+                            <h2>Xiaomi 11 Ultra</h2>
 
                             <div class="product-carousel-price">
-                                <ins>$400.00</ins> <del>$425.00</del>
+                                <ins>€1599.00</ins>
                             </div>
                         </div>
                         <div class="single-product">
@@ -254,10 +254,10 @@
                                 </div>
                             </div>
 
-                            <h2><a href="single-product.jsp">Sony microsoft</a></h2>
+                            <h2><a href="single-product.jsp">Samsung A52s 5G</a></h2>
 
                             <div class="product-carousel-price">
-                                <ins>$200.00</ins> <del>$225.00</del>
+                                <ins>€299.00</ins>
                             </div>
                         </div>
                         <div class="single-product">
@@ -269,10 +269,10 @@
                                 </div>
                             </div>
 
-                            <h2>iPhone 6</h2>
+                            <h2>Samsung S20 FE</h2>
 
                             <div class="product-carousel-price">
-                                <ins>$1200.00</ins> <del>$1355.00</del>
+                                <ins>€499.00</ins>
                             </div>
                         </div>
                         <div class="single-product">
@@ -284,10 +284,10 @@
                                 </div>
                             </div>
 
-                            <h2><a href="single-product.jsp">Samsung gallaxy note 4</a></h2>
+                            <h2><a href="single-product.jsp">Iphone 11 Pro</a></h2>
 
                             <div class="product-carousel-price">
-                                <ins>$400.00</ins>
+                                <ins>$639.00</ins>
                             </div>
                         </div>
                     </div>
@@ -326,7 +326,7 @@
                     <a href="" class="wid-view-more">View All</a>
                     <div class="single-wid-product">
                         <a href="single-product.jsp"><img src="img/products/xiaomi11t-removebg-preview.png" alt="" class="product-thumb"></a>
-                        <h2><a href="single-product.jsp">Sony Smart TV - 2015</a></h2>
+                        <h2><a href="single-product.jsp">Xiaomi 11T</a></h2>
                         <div class="product-wid-rating">
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
@@ -335,12 +335,12 @@
                             <i class="fa fa-star"></i>
                         </div>
                         <div class="product-wid-price">
-                            <ins>$400.00</ins> <del>$425.00</del>
+                            <ins>€549.00</ins>
                         </div>
                     </div>
                     <div class="single-wid-product">
                         <a href="single-product.jsp"><img src="img/products/redmi_note_10_prooo-removebg-preview.png" alt="" class="product-thumb"></a>
-                        <h2><a href="single-product.jsp">Apple new mac book 2015</a></h2>
+                        <h2><a href="single-product.jsp">Redmi Note 10 Pro</a></h2>
                         <div class="product-wid-rating">
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
@@ -349,12 +349,12 @@
                             <i class="fa fa-star"></i>
                         </div>
                         <div class="product-wid-price">
-                            <ins>$400.00</ins> <del>$425.00</del>
+                            <ins>€329.00</ins>
                         </div>
                     </div>
                     <div class="single-wid-product">
                         <a href="single-product.jsp"><img src="img/products/iphone_11_pro-removebg-preview.png" alt="" class="product-thumb"></a>
-                        <h2><a href="single-product.jsp">Apple new i phone 6</a></h2>
+                        <h2><a href="single-product.jsp">Iphone 11 Pro</a></h2>
                         <div class="product-wid-rating">
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
@@ -363,7 +363,7 @@
                             <i class="fa fa-star"></i>
                         </div>
                         <div class="product-wid-price">
-                            <ins>$400.00</ins> <del>$425.00</del>
+                            <ins>€639.00</ins>
                         </div>
                     </div>
                 </div>
@@ -374,7 +374,7 @@
                     <a href="#" class="wid-view-more">View All</a>
                     <div class="single-wid-product">
                         <a href="single-product.jsp"><img src="img/products/iphone_12-removebg-preview.png" alt="" class="product-thumb"></a>
-                        <h2><a href="single-product.jsp">Sony playstation microsoft</a></h2>
+                        <h2><a href="single-product.jsp">Iphone 12</a></h2>
                         <div class="product-wid-rating">
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
@@ -383,12 +383,12 @@
                             <i class="fa fa-star"></i>
                         </div>
                         <div class="product-wid-price">
-                            <ins>$400.00</ins> <del>$425.00</del>
+                            <ins>€889.00</ins>
                         </div>
                     </div>
                     <div class="single-wid-product">
                         <a href="single-product.jsp"><img src="img/products/oppo_reno6_pro-removebg-preview.png" alt="" class="product-thumb"></a>
-                        <h2><a href="single-product.jsp">Sony Smart Air Condtion</a></h2>
+                        <h2><a href="single-product.jsp">Oppo Reno6 Pro</a></h2>
                         <div class="product-wid-rating">
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
@@ -397,12 +397,12 @@
                             <i class="fa fa-star"></i>
                         </div>
                         <div class="product-wid-price">
-                            <ins>$400.00</ins> <del>$425.00</del>
+                            <ins>€699.00</ins>
                         </div>
                     </div>
                     <div class="single-wid-product">
                         <a href="single-product.jsp"><img src="img/products/a52s-removebg-preview.png" alt="" class="product-thumb"></a>
-                        <h2><a href="single-product.jsp">Samsung gallaxy note 4</a></h2>
+                        <h2><a href="single-product.jsp">Samsung A52s 5G</a></h2>
                         <div class="product-wid-rating">
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
@@ -411,7 +411,7 @@
                             <i class="fa fa-star"></i>
                         </div>
                         <div class="product-wid-price">
-                            <ins>$400.00</ins> <del>$425.00</del>
+                            <ins>€299</ins>
                         </div>
                     </div>
                 </div>
@@ -422,7 +422,7 @@
                     <a href="#" class="wid-view-more">View All</a>
                     <div class="single-wid-product">
                         <a href="single-product.jsp"><img src="img/products/iphone13-removebg-preview.png" alt="" class="product-thumb"></a>
-                        <h2><a href="single-product.jsp">Apple new i phone 6</a></h2>
+                        <h2><a href="single-product.jsp">Iphone 13</a></h2>
                         <div class="product-wid-rating">
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
@@ -431,12 +431,12 @@
                             <i class="fa fa-star"></i>
                         </div>
                         <div class="product-wid-price">
-                            <ins>$400.00</ins> <del>$425.00</del>
+                            <ins>€949.00</ins>
                         </div>
                     </div>
                     <div class="single-wid-product">
                         <a href="single-product.jsp"><img src="img/products/s21ultra-removebg-preview.png" alt="" class="product-thumb"></a>
-                        <h2><a href="single-product.jsp">Samsung gallaxy note 4</a></h2>
+                        <h2><a href="single-product.jsp">Samsung S21 Ultra</a></h2>
                         <div class="product-wid-rating">
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
@@ -445,7 +445,7 @@
                             <i class="fa fa-star"></i>
                         </div>
                         <div class="product-wid-price">
-                            <ins>$400.00</ins> <del>$425.00</del>
+                            <ins>€1279.00</ins>
                         </div>
                     </div>
                     <div class="single-wid-product">
@@ -459,7 +459,7 @@
                             <i class="fa fa-star"></i>
                         </div>
                         <div class="product-wid-price">
-                            <ins>$400.00</ins> <del>$425.00</del>
+                            <ins>€1599.00</ins> 
                         </div>
                     </div>
                 </div>

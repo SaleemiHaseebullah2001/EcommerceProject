@@ -548,7 +548,8 @@ body { font-family:Arial, Helvetica, sans-serif; }
 .footer-top-area .zigzag-bottom{background: #f4f4f4}
 .footer-top-area {background: none repeat scroll 0 0 #333;
     color: #999;
-    padding: 35px 0 180px;}
+    padding: 35px 0px 180px;
+}
 
 
 .footer-bottom-area {background: #000;color: #fff}
@@ -1120,4 +1121,16 @@ div.cart-collaterals ul.products li.product:hover .add_to_cart_button{background
 
 .pagination > li > a, .pagination > li > span {
     color: #5a88ca;
+}
+
+/*profile*/
+
+.text-muted {
+    color: #aeb0b4 !important;
+}
+.text-muted {
+    font-weight: 300;
+}
+#inputEmail4{
+    padding: initial;
 }

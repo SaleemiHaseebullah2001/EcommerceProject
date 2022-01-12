@@ -86,7 +86,7 @@
     <div class="row">
       <div class="col-sm-6">
         <div class="logo">
-          <h1><a href="WEB-INF"><img src="img/logo.png" alt=""></a></h1>
+          <h1><a href="WEB-INF"><img src="img/Cells_House_LogoWeb.png" alt=""></a></h1>
         </div>
       </div>
 

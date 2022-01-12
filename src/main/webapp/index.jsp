@@ -38,11 +38,11 @@
             <div class="col-md-8">
                 <div class="user-menu">
                     <ul>
-                        <li><a href="#"><i class="fa fa-user"></i> My Account</a></li>
+                        <li><a href="profile.jsp"><i class="fa fa-user"></i> My Account</a></li>
                         <li><a href="#"><i class="fa fa-heart"></i> Wishlist</a></li>
                         <li><a href="cart.jsp"><i class="fa fa-user"></i> My Cart</a></li>
                         <li><a href="checkout.jsp"><i class="fa fa-user"></i> Checkout</a></li>
-                        <li><a href="#"><i class="fa fa-user"></i> Login</a></li>
+                        <li><a href="login.jsp"><i class="fa fa-user"></i> Login</a></li>
                     </ul>
                 </div>
             </div>
@@ -79,7 +79,7 @@
         <div class="row">
             <div class="col-sm-6">
                 <div class="logo">
-                    <h1><a href="./"><img src="img/logo.png" alt=""></a></h1>
+                    <h1><a href="./"><img src="img/Cells_House_LogoWeb.png" alt=""></a></h1>
                 </div>
             </div>
 
