@@ -12,7 +12,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Checkout Page - Ustora Demo</title>
+  <title>Checkout Page - CellsHouse Demo</title>
 
   <!-- Google Fonts -->
   <link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,200,300,700,600' rel='stylesheet' type='text/css'>
@@ -45,11 +45,11 @@
       <div class="col-md-8">
         <div class="user-menu">
           <ul>
-            <li><a href="#"><i class="fa fa-user"></i> My Account</a></li>
+            <li><a href="profile.jsp"><i class="fa fa-user"></i> My Account</a></li>
             <li><a href="#"><i class="fa fa-heart"></i> Wishlist</a></li>
             <li><a href="cart.jsp"><i class="fa fa-user"></i> My Cart</a></li>
             <li><a href="checkout.jsp"><i class="fa fa-user"></i> Checkout</a></li>
-            <li><a href="#"><i class="fa fa-user"></i> Login</a></li>
+            <li><a href="login.jsp"><i class="fa fa-user"></i> Login</a></li>
           </ul>
         </div>
       </div>
@@ -86,7 +86,7 @@
     <div class="row">
       <div class="col-sm-6">
         <div class="logo">
-          <h1><a href="WEB-INF"><img src="img/logo.png" alt=""></a></h1>
+          <h1><a href="index.jsp"><img src="img/Cells_House_LogoWeb.png" alt=""></a></h1>
         </div>
       </div>
 
@@ -116,10 +116,9 @@
           <li><a href="shop.jsp">Shop page</a></li>
           <li><a href="single-product.jsp">Single product</a></li>
           <li><a href="cart.jsp">Cart</a></li>
-          <li class="active"><a href="checkout.jsp">Checkout</a></li>
+          <li><a href="checkout.jsp">Checkout</a></li>
           <li><a href="#">Category</a></li>
-          <li><a href="#">Others</a></li>
-          <li><a href="#">Contact</a></li>
+          <li class="active"><a href="contact.jsp">Contact</a></li>
         </ul>
       </div>
     </div>
@@ -131,7 +130,7 @@
     <div class="row">
       <div class="col-md-12">
         <div class="product-bit-title text-center">
-          <h2>Shopping Cart</h2>
+          <h2>Contact</h2>
         </div>
       </div>
     </div>
@@ -144,58 +143,8 @@
   <div class="container">
     <div class="row">
       <div class="col-md-4">
-        <div class="single-sidebar">
-          <h2 class="sidebar-title">Search Products</h2>
-          <form action="">
-            <input type="text" placeholder="Search products...">
-            <input type="submit" value="Search">
-          </form>
-        </div>
 
-        <div class="single-sidebar">
-          <h2 class="sidebar-title">Products</h2>
-          <div class="thubmnail-recent">
-            <img src="img/product-thumb-1.jpg" class="recent-thumb" alt="">
-            <h2><a href="single-product.jsp">Sony Smart TV - 2015</a></h2>
-            <div class="product-sidebar-price">
-              <ins>$700.00</ins> <del>$100.00</del>
-            </div>
-          </div>
-          <div class="thubmnail-recent">
-            <img src="img/product-thumb-1.jpg" class="recent-thumb" alt="">
-            <h2><a href="single-product.jsp">Sony Smart TV - 2015</a></h2>
-            <div class="product-sidebar-price">
-              <ins>$700.00</ins> <del>$100.00</del>
-            </div>
-          </div>
-          <div class="thubmnail-recent">
-            <img src="img/product-thumb-1.jpg" class="recent-thumb" alt="">
-            <h2><a href="single-product.jsp">Sony Smart TV - 2015</a></h2>
-            <div class="product-sidebar-price">
-              <ins>$700.00</ins> <del>$100.00</del>
-            </div>
-          </div>
-          <div class="thubmnail-recent">
-            <img src="img/product-thumb-1.jpg" class="recent-thumb" alt="">
-            <h2><a href="single-product.jsp">Sony Smart TV - 2015</a></h2>
-            <div class="product-sidebar-price">
-              <ins>$700.00</ins> <del>$100.00</del>
-            </div>
-          </div>
-        </div>
-
-        <div class="single-sidebar">
-          <h2 class="sidebar-title">Recent Posts</h2>
-          <ul>
-            <li><a href="single-product.jsp">Sony Smart TV - 2015</a></li>
-            <li><a href="single-product.jsp">Sony Smart TV - 2015</a></li>
-            <li><a href="single-product.jsp">Sony Smart TV - 2015</a></li>
-            <li><a href="single-product.jsp">Sony Smart TV - 2015</a></li>
-            <li><a href="single-product.jsp">Sony Smart TV - 2015</a></li>
-          </ul>
-        </div>
-      </div>
-
+        <!-- Contact form area -->
       <div class="col-md-8">
         <div class="product-content-right">
           <div class="woocommerce">
@@ -210,20 +159,20 @@
                 </label>
                 <input type="text" id="email" name="email" class="input-text">
               </p>
-              <p class="form-row form-row-last">
+              <p class="form-row form-row-second">
                 <label for="name">Full name <span class="required">*</span>
                 </label>
                 <input type="text" id="name" name="name" class="input-text">
               </p>
-              <p class="form-row form-row-last">
+              <p class="form-row form-row-third">
                 <label for="subject">Subject <span class="required">*</span>
                 </label>
                 <input type="text" id="subject" name="subject" class="input-text">
               </p>
-              <p class="form-row form-row-last">
+              <p class="form-row form-row-fourth">
                 <label for="message">Message <span class="required">*</span>
                 </label>
-                <input type="text" id="message" name="message" class="input-text">
+                <textarea id="message" name="message" class="input-text" style="height: 200px; width: 300px"></textarea>
               </p>
               <div class="clear"></div>
 
@@ -248,8 +197,8 @@
     <div class="row">
       <div class="col-md-3 col-sm-6">
         <div class="footer-about-us">
-          <h2>u<span>Stora</span></h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis sunt id doloribus vero quam laborum quas alias dolores blanditiis iusto consequatur, modi aliquid eveniet eligendi iure eaque ipsam iste, pariatur omnis sint! Suscipit, debitis, quisquam. Laborum commodi veritatis magni at?</p>
+          <h2>cells<span>House</span></h2>
+          <p>We have the best service and prices in the world</p>
           <div class="footer-social">
             <a href="#" target="_blank"><i class="fa fa-facebook"></i></a>
             <a href="#" target="_blank"><i class="fa fa-twitter"></i></a>
@@ -303,7 +252,7 @@
     <div class="row">
       <div class="col-md-8">
         <div class="copyright">
-          <p>&copy; 2015 uCommerce. All Rights Reserved. <a href="http://www.freshdesignweb.com" target="_blank">freshDesignweb.com</a></p>
+          <p>&copy;CellsHouse. All Rights Reserved. <a href="" target="_blank"></a></p>
         </div>
       </div>
 

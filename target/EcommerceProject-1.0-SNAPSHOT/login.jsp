@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Ustora</title>
+    <title>CellsHouse</title>
 
     <!-- Google Fonts -->
     <link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,200,300,700,600' rel='stylesheet' type='text/css'>
@@ -43,7 +43,7 @@
                         <li><a href="#"><i class="fa fa-heart"></i> Wishlist</a></li>
                         <li><a href="cart.jsp"><i class="fa fa-user"></i> My Cart</a></li>
                         <li><a href="checkout.jsp"><i class="fa fa-user"></i> Checkout</a></li>
-                        <li><a href="#"><i class="fa fa-user"></i> Login</a></li>
+                        <li><a href="login.jsp"><i class="fa fa-user"></i> Login</a></li>
                     </ul>
                 </div>
             </div>
@@ -80,7 +80,7 @@
         <div class="row">
             <div class="col-sm-6">
                 <div class="logo">
-                    <h1><a href="./"><img src="img/logo.png" alt=""></a></h1>
+                    <h1><a href="index.jsp"><img src="img/Cells_House_LogoWeb.png" alt=""></a></h1>
                 </div>
             </div>
 
@@ -119,12 +119,12 @@
     </div>
 </div> <!-- End mainmenu area -->
 
-<form action="action_page.php" style="border:1px solid #ccc">
+<form action="ServletLogin" method="post" style="border:1px solid #ccc">
     <div class="container">
         <h1>Login</h1>
         <p>Please fill in this form to login.</p>
         <hr>
-
+        <p id="errore">${errorLabel}</p>
         <label for="login-email"><b>Email</b></label>
         <input type="text" id="login-email" placeholder="Enter Email" name="email" required>
 
@@ -151,8 +151,8 @@
         <div class="row">
             <div class="col-md-3 col-sm-6">
                 <div class="footer-about-us">
-                    <h2>u<span>Stora</span></h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis sunt id doloribus vero quam laborum quas alias dolores blanditiis iusto consequatur, modi aliquid eveniet eligendi iure eaque ipsam iste, pariatur omnis sint! Suscipit, debitis, quisquam. Laborum commodi veritatis magni at?</p>
+                    <h2>cells<span>House</span></h2>
+                    <p>We have the best service and prices in the world</p>
                     <div class="footer-social">
                         <a href="#" target="_blank"><i class="fa fa-facebook"></i></a>
                         <a href="#" target="_blank"><i class="fa fa-twitter"></i></a>
@@ -209,7 +209,7 @@
         <div class="row">
             <div class="col-md-8">
                 <div class="copyright">
-                    <p>&copy; 2015 uCommerce. All Rights Reserved. <a href="http://www.freshdesignweb.com" target="_blank">freshDesignweb.com</a></p>
+                    <p>&copy;CellsHouse. All Rights Reserved. <a href="" target="_blank"></a></p>
                 </div>
             </div>
 
