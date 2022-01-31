@@ -20,7 +20,7 @@
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/owl.carousel.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="./css/style.css" type="text/css">
     <link rel="stylesheet" href="css/responsive.css">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -107,7 +107,6 @@
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="index.jsp">Home</a></li>
                     <li><a href="<%=request.getContextPath()%>/shop">Shop page</a></li>
-                    <li><a href="single-product.jsp">Single product</a></li>
                     <li><a href="cart.jsp">Cart</a></li>
                     <li><a href="checkout.jsp">Checkout</a></li>
                     <li><a href="#">Category</a></li>

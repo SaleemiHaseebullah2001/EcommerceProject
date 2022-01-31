@@ -119,8 +119,7 @@ URL: https://www./CellsHouse/
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li><a href="index.jsp">Home</a></li>
-                    <li class="active"><a href="shop.jsp">Shop page</a></li>
-                    <li><a href="single-product.jsp">Single product</a></li>
+                    <li><a href="<%=request.getContextPath()%>/shop">Shop page</a></li>
                     <li><a href="cart.jsp">Cart</a></li>
                     <li><a href="checkout.jsp">Checkout</a></li>
                     <li><a href="#">Category</a></li>
@@ -160,9 +159,9 @@ URL: https://www./CellsHouse/
                     <div class="product-upper">
                         <img src="<%=product.getImage()%> " alt="" height="195" width="243">
                     </div>
-                    <h2><a href="shop.jsp?id=<%=product.getId()%>"><%=product.getName()%></a></h2>
+                    <h2><a href="single-product?id=<%=product.getId()%>"><%=product.getName()%></a></h2>
                     <div class="product-carousel-price">
-                        <ins><%=product.getPrice()%></ins> <del></del>
+                        <ins>€<%=String.format("%.2f",product.getPrice())%></ins> <del></del>
                     </div>
 
                     <div class="product-option-shop">

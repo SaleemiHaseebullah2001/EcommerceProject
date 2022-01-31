@@ -119,8 +119,7 @@ URL: https://www./CellsHouse/
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li><a href="index.jsp">Home</a></li>
-                    <li class="active"><a href="shop.jsp">Shop page</a></li>
-                    <li><a href="single-product.jsp">Single product</a></li>
+                    <li><a href="<%=request.getContextPath()%>/shop">Shop page</a></li>
                     <li><a href="cart.jsp">Cart</a></li>
                     <li><a href="checkout.jsp">Checkout</a></li>
                     <li><a href="#">Category</a></li>
@@ -160,9 +159,9 @@ URL: https://www./CellsHouse/
                     <div class="product-upper">
                         <img src="<%=product.getImage()%> " alt="" height="195" width="243">
                     </div>
-                    <h2><a href="shop.jsp?id=<%=product.getId()%>"><%=product.getName()%></a></h2>
+                    <h2><a href="single-product?id=<%=product.getId()%>"><%=product.getName()%></a></h2>
                     <div class="product-carousel-price">
-                        <ins><%=product.getPrice()%></ins> <del></del>
+                        <ins>€<%=String.format("%.2f",product.getPrice())%></ins> <del></del>
                     </div>
 
                     <div class="product-option-shop">
@@ -173,175 +172,175 @@ URL: https://www./CellsHouse/
             <%
                 }
             %>
-            <div class="col-md-3 col-sm-6">
-                <div class="single-shop-product">
-                    <div class="product-upper">
-                        <img src="img/products/iphone_11_pro-removebg-preview.png" alt="" height="195" width="243">
-                    </div>
-                    <h2><a href="">iphone 11 Pro</a></h2>
-                    <div class="product-carousel-price">
-                        <ins>€639.00</ins> <del></del>
-                    </div>
+<%--            <div class="col-md-3 col-sm-6">--%>
+<%--                <div class="single-shop-product">--%>
+<%--                    <div class="product-upper">--%>
+<%--                        <img src="img/products/iphone_11_pro-removebg-preview.png" alt="" height="195" width="243">--%>
+<%--                    </div>--%>
+<%--                    <h2><a href="">iphone 11 Pro</a></h2>--%>
+<%--                    <div class="product-carousel-price">--%>
+<%--                        <ins>€639.00</ins> <del></del>--%>
+<%--                    </div>--%>
 
-                    <div class="product-option-shop">
-                        <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow" href="/canvas/shop/?add-to-cart=70">Add to cart</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6">
-                <div class="single-shop-product">
-                    <div class="product-upper">
-                        <img src="img/products/iphone13-removebg-preview.png" alt="" height="195" width="243">
-                    </div>
-                    <h2><a href="">iphone 13</a></h2>
-                    <div class="product-carousel-price">
-                        <ins>€949.00</ins> <del></del>
-                    </div>
+<%--                    <div class="product-option-shop">--%>
+<%--                        <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow" href="/canvas/shop/?add-to-cart=70">Add to cart</a>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
+<%--            </div>--%>
+<%--            <div class="col-md-3 col-sm-6">--%>
+<%--                <div class="single-shop-product">--%>
+<%--                    <div class="product-upper">--%>
+<%--                        <img src="img/products/iphone13-removebg-preview.png" alt="" height="195" width="243">--%>
+<%--                    </div>--%>
+<%--                    <h2><a href="">iphone 13</a></h2>--%>
+<%--                    <div class="product-carousel-price">--%>
+<%--                        <ins>€949.00</ins> <del></del>--%>
+<%--                    </div>--%>
 
-                    <div class="product-option-shop">
-                        <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow" href="/canvas/shop/?add-to-cart=70">Add to cart</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6">
-                <div class="single-shop-product">
-                    <div class="product-upper">
-                        <img src="img/products/a52s-removebg-preview.png" alt="" height="195" width="243">
-                    </div>
-                    <h2><a href="">Samsung A52s</a></h2>
-                    <div class="product-carousel-price">
-                        <ins>€299.00</ins> <del></del>
-                    </div>
-                    <br>
-                    <div class="product-option-shop">
-                        <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow" href="/canvas/shop/?add-to-cart=70">Add to cart</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6">
-                <div class="single-shop-product">
-                    <div class="product-upper">
-                        <img src="img/products/s20_fe-removebg-preview.png" alt="" height="170" width="225">
-                    </div>
-                    <h2><a href="">Samsung S20 FE</a></h2>
-                    <div class="product-carousel-price">
-                        <ins>€499.00</ins> <del></del>
-                    </div>
+<%--                    <div class="product-option-shop">--%>
+<%--                        <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow" href="/canvas/shop/?add-to-cart=70">Add to cart</a>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
+<%--            </div>--%>
+<%--            <div class="col-md-3 col-sm-6">--%>
+<%--                <div class="single-shop-product">--%>
+<%--                    <div class="product-upper">--%>
+<%--                        <img src="img/products/a52s-removebg-preview.png" alt="" height="195" width="243">--%>
+<%--                    </div>--%>
+<%--                    <h2><a href="">Samsung A52s</a></h2>--%>
+<%--                    <div class="product-carousel-price">--%>
+<%--                        <ins>€299.00</ins> <del></del>--%>
+<%--                    </div>--%>
+<%--                    <br>--%>
+<%--                    <div class="product-option-shop">--%>
+<%--                        <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow" href="/canvas/shop/?add-to-cart=70">Add to cart</a>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
+<%--            </div>--%>
+<%--            <div class="col-md-3 col-sm-6">--%>
+<%--                <div class="single-shop-product">--%>
+<%--                    <div class="product-upper">--%>
+<%--                        <img src="img/products/s20_fe-removebg-preview.png" alt="" height="170" width="225">--%>
+<%--                    </div>--%>
+<%--                    <h2><a href="">Samsung S20 FE</a></h2>--%>
+<%--                    <div class="product-carousel-price">--%>
+<%--                        <ins>€499.00</ins> <del></del>--%>
+<%--                    </div>--%>
 
-                    <div class="product-option-shop">
-                        <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow" href="/canvas/shop/?add-to-cart=70">Add to cart</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6">
-                <div class="single-shop-product">
-                    <div class="product-upper">
-                        <img src="img/products/s21ultra-removebg-preview.png" alt="" height="195" width="243">
-                    </div>
-                    <h2><a href="">Samsung S21 Ultra</a></h2>
-                    <div class="product-carousel-price">
-                        <ins>€1279.00</ins> <del></del>
-                    </div>
-                    <br>
-                    <div class="product-option-shop">
-                        <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow" href="/canvas/shop/?add-to-cart=70">Add to cart</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6">
-                <div class="single-shop-product">
-                    <div class="product-upper">
-                        <img src="img/products/xiaomi11ultra-removebg-preview.png" alt="" height="195" width="243">
-                    </div>
-                    <h2><a href="">Xiaomi 11 Ultra</a></h2>
-                    <div class="product-carousel-price">
-                        <ins>€1599.00</ins> <del></del>
-                    </div>
+<%--                    <div class="product-option-shop">--%>
+<%--                        <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow" href="/canvas/shop/?add-to-cart=70">Add to cart</a>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
+<%--            </div>--%>
+<%--            <div class="col-md-3 col-sm-6">--%>
+<%--                <div class="single-shop-product">--%>
+<%--                    <div class="product-upper">--%>
+<%--                        <img src="img/products/s21ultra-removebg-preview.png" alt="" height="195" width="243">--%>
+<%--                    </div>--%>
+<%--                    <h2><a href="">Samsung S21 Ultra</a></h2>--%>
+<%--                    <div class="product-carousel-price">--%>
+<%--                        <ins>€1279.00</ins> <del></del>--%>
+<%--                    </div>--%>
+<%--                    <br>--%>
+<%--                    <div class="product-option-shop">--%>
+<%--                        <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow" href="/canvas/shop/?add-to-cart=70">Add to cart</a>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
+<%--            </div>--%>
+<%--            <div class="col-md-3 col-sm-6">--%>
+<%--                <div class="single-shop-product">--%>
+<%--                    <div class="product-upper">--%>
+<%--                        <img src="img/products/xiaomi11ultra-removebg-preview.png" alt="" height="195" width="243">--%>
+<%--                    </div>--%>
+<%--                    <h2><a href="">Xiaomi 11 Ultra</a></h2>--%>
+<%--                    <div class="product-carousel-price">--%>
+<%--                        <ins>€1599.00</ins> <del></del>--%>
+<%--                    </div>--%>
 
-                    <div class="product-option-shop">
-                        <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow" href="/canvas/shop/?add-to-cart=70">Add to cart</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6">
-                <div class="single-shop-product">
-                    <div class="product-upper">
-                        <img src="img/products/xiaomi11t-removebg-preview.png" alt="" height="195" width="243">
-                    </div>
-                    <h2><a href="">Xiaomi 11T</a></h2>
-                    <div class="product-carousel-price">
-                        <ins>€549.00</ins> <del></del>
-                    </div>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <div class="product-option-shop">
-                        <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow" href="/canvas/shop/?add-to-cart=70">Add to cart</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6">
-                <div class="single-shop-product">
-                    <div class="product-upper">
-                        <img src="img/products/redmi_note_10_prooo-removebg-preview.png" alt="" width="243">
-                    </div>
-                    <h2><a href="">Xiaomi Redmi Note 10 Pro</a></h2>
-                    <div class="product-carousel-price">
-                        <ins>€329.00</ins> <del></del>
-                    </div>
+<%--                    <div class="product-option-shop">--%>
+<%--                        <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow" href="/canvas/shop/?add-to-cart=70">Add to cart</a>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
+<%--            </div>--%>
+<%--            <div class="col-md-3 col-sm-6">--%>
+<%--                <div class="single-shop-product">--%>
+<%--                    <div class="product-upper">--%>
+<%--                        <img src="img/products/xiaomi11t-removebg-preview.png" alt="" height="195" width="243">--%>
+<%--                    </div>--%>
+<%--                    <h2><a href="">Xiaomi 11T</a></h2>--%>
+<%--                    <div class="product-carousel-price">--%>
+<%--                        <ins>€549.00</ins> <del></del>--%>
+<%--                    </div>--%>
+<%--                    <br>--%>
+<%--                    <br>--%>
+<%--                    <br>--%>
+<%--                    <br>--%>
+<%--                    <div class="product-option-shop">--%>
+<%--                        <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow" href="/canvas/shop/?add-to-cart=70">Add to cart</a>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
+<%--            </div>--%>
+<%--            <div class="col-md-3 col-sm-6">--%>
+<%--                <div class="single-shop-product">--%>
+<%--                    <div class="product-upper">--%>
+<%--                        <img src="img/products/redmi_note_10_prooo-removebg-preview.png" alt="" width="243">--%>
+<%--                    </div>--%>
+<%--                    <h2><a href="">Xiaomi Redmi Note 10 Pro</a></h2>--%>
+<%--                    <div class="product-carousel-price">--%>
+<%--                        <ins>€329.00</ins> <del></del>--%>
+<%--                    </div>--%>
 
-                    <div class="product-option-shop">
-                        <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow" href="/canvas/shop/?add-to-cart=70">Add to cart</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6">
-                <div class="single-shop-product">
-                    <div class="product-upper">
-                        <img src="img/products/oppodindx3pro-removebg-preview.png" alt="" height="150" width="243">
-                    </div>
-                    <h2><a href="">Oppo Find X3 Pro</a></h2>
-                    <div class="product-carousel-price">
-                        <ins>€899.00</ins> <del></del>
-                    </div>
+<%--                    <div class="product-option-shop">--%>
+<%--                        <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow" href="/canvas/shop/?add-to-cart=70">Add to cart</a>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
+<%--            </div>--%>
+<%--            <div class="col-md-3 col-sm-6">--%>
+<%--                <div class="single-shop-product">--%>
+<%--                    <div class="product-upper">--%>
+<%--                        <img src="img/products/oppodindx3pro-removebg-preview.png" alt="" height="150" width="243">--%>
+<%--                    </div>--%>
+<%--                    <h2><a href="">Oppo Find X3 Pro</a></h2>--%>
+<%--                    <div class="product-carousel-price">--%>
+<%--                        <ins>€899.00</ins> <del></del>--%>
+<%--                    </div>--%>
 
-                    <div class="product-option-shop">
-                        <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow" href="/canvas/shop/?add-to-cart=70">Add to cart</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6">
-                <div class="single-shop-product">
-                    <div class="product-upper">
-                        <img src="img/products/oppo_reno6_pro-removebg-preview.png" alt="" height="195" width="243">
-                    </div>
-                    <h2><a href="">Oppo Reno 6 Pro</a></h2>
-                    <div class="product-carousel-price">
-                        <ins>€699.00</ins> <del></del>
-                    </div>
+<%--                    <div class="product-option-shop">--%>
+<%--                        <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow" href="/canvas/shop/?add-to-cart=70">Add to cart</a>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
+<%--            </div>--%>
+<%--            <div class="col-md-3 col-sm-6">--%>
+<%--                <div class="single-shop-product">--%>
+<%--                    <div class="product-upper">--%>
+<%--                        <img src="img/products/oppo_reno6_pro-removebg-preview.png" alt="" height="195" width="243">--%>
+<%--                    </div>--%>
+<%--                    <h2><a href="">Oppo Reno 6 Pro</a></h2>--%>
+<%--                    <div class="product-carousel-price">--%>
+<%--                        <ins>€699.00</ins> <del></del>--%>
+<%--                    </div>--%>
 
-                    <div class="product-option-shop">
-                        <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow" href="/canvas/shop/?add-to-cart=70">Add to cart</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6">
-                <div class="single-shop-product">
-                    <div class="product-upper">
-                        <img src="img/products/oppo_find_x3_neo-removebg-preview.png" alt="" height="195" width="243">
-                    </div>
-                    <h2><a href="">Oppo Find X3 Neo</a></h2>
-                    <div class="product-carousel-price">
-                        <ins>€799.00</ins> <del></del>
-                    </div>
-                    <br>
-                    <div class="product-option-shop">
-                        <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow" href="/canvas/shop/?add-to-cart=70">Add to cart</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+<%--                    <div class="product-option-shop">--%>
+<%--                        <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow" href="/canvas/shop/?add-to-cart=70">Add to cart</a>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
+<%--            </div>--%>
+<%--            <div class="col-md-3 col-sm-6">--%>
+<%--                <div class="single-shop-product">--%>
+<%--                    <div class="product-upper">--%>
+<%--                        <img src="img/products/oppo_find_x3_neo-removebg-preview.png" alt="" height="195" width="243">--%>
+<%--                    </div>--%>
+<%--                    <h2><a href="">Oppo Find X3 Neo</a></h2>--%>
+<%--                    <div class="product-carousel-price">--%>
+<%--                        <ins>€799.00</ins> <del></del>--%>
+<%--                    </div>--%>
+<%--                    <br>--%>
+<%--                    <div class="product-option-shop">--%>
+<%--                        <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow" href="/canvas/shop/?add-to-cart=70">Add to cart</a>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
+<%--            </div>--%>
+       </div>
 
         <div class="row">
             <div class="col-md-12">

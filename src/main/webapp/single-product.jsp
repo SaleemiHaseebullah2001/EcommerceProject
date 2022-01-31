@@ -1,4 +1,4 @@
-<%--
+<%@ page import="com.example.ecommerceproject.Model.Product" %><%--
   Created by IntelliJ IDEA.
   User: mehar
   Date: 05/01/2022
@@ -118,8 +118,7 @@ URL: https://www./CellsHouse/
       <div class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
           <li><a href="index.jsp">Home</a></li>
-          <li><a href="shop.jsp">Shop page</a></li>
-          <li class="active"><a href="single-product.jsp">Single product</a></li>
+          <li><a href="<%=request.getContextPath()%>/shop">Shop page</a></li>
           <li><a href="cart.jsp">Cart</a></li>
           <li><a href="checkout.jsp">Checkout</a></li>
           <li><a href="#">Category</a></li>
@@ -201,19 +200,21 @@ URL: https://www./CellsHouse/
         </div>
       </div>
       -->
+
+      <% Product product = (Product) request.getAttribute("product"); %>
       <div class="col-md-8">
         <div class="product-content-right">
           <div class="product-breadcroumb">
             <a href="">Home</a>
             <a href="">Smartphone</a>
-            <a href="">Samsung S21 Ultra</a>
+            <a href=""><%=product.getName()%></a>
           </div>
 
           <div class="row">
             <div class="col-sm-6">
               <div class="product-images">
                 <div class="product-main-img">
-                  <img src="img/products/s21ultra-removebg-preview.png" alt="">
+                  <img src="<%=product.getImage()%>" alt="">
                 </div>
 
                 <div class="product-gallery">
@@ -226,9 +227,9 @@ URL: https://www./CellsHouse/
 
             <div class="col-sm-6">
               <div class="product-inner">
-                <h2 class="product-name">Sony Smart TV - 2015</h2>
+                <h2 class="product-name"><%=product.getName()%></h2>
                 <div class="product-inner-price">
-                  <ins>$700.00</ins> <del>$100.00</del>
+                  <ins>€<%=String.format("%.2f",product.getPrice())%></ins>
                 </div>
 
                 <form action="" class="cart">
@@ -250,9 +251,7 @@ URL: https://www./CellsHouse/
                   <div class="tab-content">
                     <div role="tabpanel" class="tab-pane fade in active" id="home">
                       <h2>Product Description</h2>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tristique, diam in consequat iaculis, est purus iaculis mauris, imperdiet facilisis ante ligula at nulla. Quisque volutpat nulla risus, id maximus ex aliquet ut. Suspendisse potenti. Nulla varius lectus id turpis dignissim porta. Quisque magna arcu, blandit quis felis vehicula, feugiat gravida diam. Nullam nec turpis ligula. Aliquam quis blandit elit, ac sodales nisl. Aliquam eget dolor eget elit malesuada aliquet. In varius lorem lorem, semper bibendum lectus lobortis ac.</p>
-
-                      <p>Mauris placerat vitae lorem gravida viverra. Mauris in fringilla ex. Nulla facilisi. Etiam scelerisque tincidunt quam facilisis lobortis. In malesuada pulvinar neque a consectetur. Nunc aliquam gravida purus, non malesuada sem accumsan in. Morbi vel sodales libero.</p>
+                      <p><%=product.getDescription()%></p>
                     </div>
                     <div role="tabpanel" class="tab-pane fade" id="profile">
                       <h2>Reviews</h2>
@@ -300,6 +299,7 @@ URL: https://www./CellsHouse/
                   <ins>$700.00</ins> <del>$100.00</del>
                 </div>
               </div>
+
               <div class="single-product">
                 <div class="product-f-image">
                   <img src="img/product-2.jpg" alt="">
@@ -314,6 +314,7 @@ URL: https://www./CellsHouse/
                   <ins>$899.00</ins> <del>$999.00</del>
                 </div>
               </div>
+
               <div class="single-product">
                 <div class="product-f-image">
                   <img src="img/product-3.jpg" alt="">

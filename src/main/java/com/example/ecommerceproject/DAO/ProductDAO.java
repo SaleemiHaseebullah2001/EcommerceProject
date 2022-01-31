@@ -6,6 +6,8 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import static java.lang.Math.round;
+
 public class ProductDAO {
     public static final String driver = "org.mariadb.jdbc.Driver";
     public static final String databaseUrl = "jdbc:mariadb://localhost:3306/schoolproject";
@@ -47,4 +49,19 @@ public class ProductDAO {
         return products;
     }
 
+    public Product getProductById(int id) throws SQLException {
+        Product product = null;
+        try(Connection connection = getConnection(); PreparedStatement preparedStatement= connection.prepareStatement(SELECT_PRODUCT_BY_ID_SQL)){
+            preparedStatement.setInt(1,id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()){
+                String image = resultSet.getString("image");
+                String name = resultSet.getString("name");
+                String description = resultSet.getString("description");
+                double price = resultSet.getDouble("price");
+                product = new Product(id,image, name, price, description);
+            }
+        }
+        return product;
+    }
 }
