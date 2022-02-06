@@ -121,7 +121,7 @@ URL: https://www./CellsHouse/
           <li><a href="index.jsp">Home</a></li>
           <li><a href="<%=request.getContextPath()%>/shop">Shop page</a></li>
           <li><a href="cart.jsp">Cart</a></li>
-          <li><a href="checkout.jsp">Checkout</a></li>
+          <!--<li><a href="checkout.jsp" >Checkout</a></li> -->
           <li><a href="#">Category</a></li>
           <li><a href="contact.jsp">Contact</a></li>
         </ul>

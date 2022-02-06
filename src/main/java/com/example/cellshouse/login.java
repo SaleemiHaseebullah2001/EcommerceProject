@@ -6,10 +6,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class login {
-    public static String AutenticaUser(String loginEmail,String loginPassword){
+    public static int AutenticaUser(String loginEmail,String loginPassword){
         String querySQL="SELECT * FROM registration WHERE email=?";
         Connection conn = MySQLService.getDBConnection();
-        String email="";
+        int userid = -1;
         try{
             PreparedStatement pst = null;
             try {
@@ -17,21 +17,18 @@ public class login {
             } catch (SQLException ex) {
                 ex.printStackTrace();
             }
-            pst.setString(1, loginEmail);
+            pst.setString(2, loginEmail);
             ResultSet rs = pst.executeQuery();
 
             System.out.println(rs);
             if (rs.next()){
 
-                if (rs.getString(2).equals(loginPassword)){
-
-                    rs.getString(1);
-
-                    email=rs.getString(1);
+                if (rs.getString(3).equals(loginPassword)){
+                    userid=rs.getInt(1);
                     conn.close();
                 }else{
                     conn.close();
-                    email="sbagliato";
+                    userid = -1;
                 }
             }else{
                 conn.close();
@@ -44,7 +41,7 @@ public class login {
         }catch(SQLException ex) {
             ex.printStackTrace();
         }
-        return email;
+        return userid;
     }
 
 }
