@@ -119,7 +119,7 @@
     </div>
 </div> <!-- End mainmenu area -->
 
-<form action="ServletRegister" method="post" style="border:1px solid #ccc">
+<form action="RegisterServlet" method="post" style="border:1px solid #ccc">
     <div class="container">
         <h1>Signup</h1>
         <p>Please fill in this form to create an account.</p>
@@ -131,27 +131,27 @@
         <label for="signup-password"><b>Password</b></label>
         <input type="password" id="signup-password" placeholder="Enter Password" name="password" required>
 
-        <label for="pass-repeat"><b>Repeat Password</b></label>
-        <input type="password" id="pass-repeat" placeholder="Repeat Password" name="pass-repeat" required> <br>
+<%--        <label for="pass-repeat"><b>Repeat Password</b></label>--%>
+<%--        <input type="password" id="pass-repeat" placeholder="Repeat Password" name="pass-repeat" required> <br>--%>
 
         <label for="firstname" class="label-title">First name *</label>
-        <input type="text" id="firstname" class="form-input" placeholder="enter your first name" required />
+        <input type="text" id="firstname" class="form-input" name="name" placeholder="enter your first name" required />
 
         <label for="lastname" class="label-title">Last name</label>
-        <input type="text" id="lastname" class="form-input" placeholder="enter your last name" required/>
+        <input type="text" id="lastname" class="form-input" name="surname" placeholder="enter your last name" required/>
 
         <label for="pnumber"><b>Number </b></label>
         <input type="text" id="pnumber" placeholder="Enter your name" name="pnumber" required>
 
         <label class="label-title">Gender:</label>
-        <label for="male"><input type="radio" name="gender" value="male" id="male"> Male</label>
-        <label for="female"><input type="radio" name="gender" value="female" id="female"> Female</label><br>
+        <label for="male"><input type="radio" name="genderM" value="male" id="male"> Male</label>
+        <label for="female"><input type="radio" name="genderF" value="female" id="female"> Female</label><br>
         <br>
         <label for="login-email"><b>Address</b></label>
-        <input type="text" class="form-control" id="autocomplete" placeholder="Street">
-        <input type="text" class="form-control" id="inputCounty" placeholder="number">
-        <input type="text" class="form-control" id="inputCity" placeholder="City">
-        <input type="text" class="form-control" id="inputState" placeholder="State">
+        <input type="text" class="form-control" id="autocomplete" name="street" placeholder="Street">
+        <input type="text" class="form-control" id="inputCounty" name="number" placeholder="number">
+        <input type="text" class="form-control" id="inputCity" name="city" placeholder="City">
+        <input type="text" class="form-control" id="inputState" name="state" placeholder="State">
         <input type="text" class="form-control" id="inputZip" placeholder="Zip">
         <b>Already have an Account?<a href="login.jsp">Login</a></b>
 

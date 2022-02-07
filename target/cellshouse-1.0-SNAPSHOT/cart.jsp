@@ -200,7 +200,7 @@
             <div class="col-md-8">
                 <div class="product-content-right">
                     <div class="woocommerce">
-                        <form method="get" action="CheckoutServlet">
+                        <form method="get" action="checkout">
                             <table cellspacing="0" class="shop_table cart">
                                 <thead>
                                 <tr>
