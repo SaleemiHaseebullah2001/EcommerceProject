@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page session="true" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -119,12 +120,12 @@
     </div>
 </div> <!-- End mainmenu area -->
 
-<form action="ServletLogin" method="post" style="border:1px solid #ccc">
+<form action="login" method="post" id="loginForm" style="border:1px solid #ccc">
     <div class="container">
         <h1>Login</h1>
         <p>Please fill in this form to login.</p>
         <hr>
-        <p id="errore">${errorLabel}</p>
+        <p id="errore">${message}</p>
         <label for="login-email"><b>Email</b></label>
         <input type="text" id="login-email" placeholder="Enter Email" name="email" required>
 
@@ -244,5 +245,37 @@
 <!-- Slider -->
 <script type="text/javascript" src="js/bxslider.min.js"></script>
 <script type="text/javascript" src="js/script.slider.js"></script>
+<!--Login Scripts -->
+<script
+        src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous"></script>
+<script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.0/dist/jquery.validate.min.js"></script>
+<script type="text/javascript">
+
+    $(document).ready(function() {
+        $("#loginForm").validate({
+            rules: {
+                email: {
+                    required: true,
+                    email: true
+                },
+
+                password: "required",
+            },
+
+            messages: {
+                email: {
+                    required: "Please enter email",
+                    email: "Please enter a valid email address"
+                },
+
+                password: "Please enter password"
+            }
+        });
+
+    });
+</script>
 </body>
 </html>

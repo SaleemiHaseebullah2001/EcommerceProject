@@ -46,7 +46,7 @@ public class RegisterServlet extends HttpServlet {
         registerBean.setNumber(number);
         registerBean.setCity(city);
         registerBean.setZip(zip);
-        registerBean.setZip(state);
+        registerBean.setState(state);
 
         RegisterDAO registerDao = new RegisterDAO();
 

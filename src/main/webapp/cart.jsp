@@ -213,8 +213,10 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <%List<cart_item> cart = new ArrayList<cart_item>();
+                                <%List<cart_item> cart = new ArrayList<>();
+                                    System.out.println("cart.jsp" + session.getAttribute("cart"));
                                 cart = (List<cart_item>) session.getAttribute("cart");
+                                    System.out.println("cart.jsp" + cart.size());
                                 %>
                                 <% for (cart_item  item : cart) {%>
                                 <tr class="cart_item">

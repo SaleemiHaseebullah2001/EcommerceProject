@@ -124,7 +124,7 @@
         <h1>Signup</h1>
         <p>Please fill in this form to create an account.</p>
         <hr>
-
+        <p id="signup-error">${(errMessage)}</p>
         <label for="login-email"><b>Email</b></label>
         <input type="text" id="login-email" placeholder="Enter Email" name="email" required>
 
@@ -144,15 +144,15 @@
         <input type="text" id="pnumber" placeholder="Enter your name" name="pnumber" required>
 
         <label class="label-title">Gender:</label>
-        <label for="male"><input type="radio" name="genderM" value="male" id="male"> Male</label>
-        <label for="female"><input type="radio" name="genderF" value="female" id="female"> Female</label><br>
+        <label for="male"><input type="radio" name="gender" value="male" id="male"> Male</label>
+        <label for="female"><input type="radio" name="gender" value="female" id="female"> Female</label><br>
         <br>
         <label for="login-email"><b>Address</b></label>
         <input type="text" class="form-control" id="autocomplete" name="street" placeholder="Street">
         <input type="text" class="form-control" id="inputCounty" name="number" placeholder="number">
         <input type="text" class="form-control" id="inputCity" name="city" placeholder="City">
         <input type="text" class="form-control" id="inputState" name="state" placeholder="State">
-        <input type="text" class="form-control" id="inputZip" placeholder="Zip">
+        <input type="text" class="form-control" id="inputZip" name="zip" placeholder="Zip">
         <b>Already have an Account?<a href="login.jsp">Login</a></b>
 
 

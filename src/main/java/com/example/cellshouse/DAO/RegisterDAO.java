@@ -6,8 +6,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.*;
-import com.example.cellshouse.Model.RegisterBean;
-import com.example.cellshouse.MySQLService;
 public class RegisterDAO {
     public String registerUser(RegisterBean registerBean) throws SQLException {
         String email = registerBean.getEmail();
@@ -41,13 +39,13 @@ public class RegisterDAO {
                 pst.setString(2, password);
                 pst.setString(3, name);
                 pst.setString(4, surname);
-                pst.setString(5,pnumber);
+                pst.setString(5, pnumber);
                 pst.setString(6, gender);
-                pst.setString(7,street);
-                pst.setString(8,number);
-                pst.setString(9,city);
-                pst.setString(10,zip);
-                pst.setString(11,state);
+                pst.setString(7, street);
+                pst.setString(8, number);
+                pst.setString(9, city);
+                pst.setString(10, zip);
+                pst.setString(11, state);
 
                 pst.executeUpdate();
 

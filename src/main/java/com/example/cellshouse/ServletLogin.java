@@ -42,20 +42,7 @@ public class ServletLogin extends HttpServlet {
             HttpSession session= request.getSession();
             session.setAttribute("userid",userid);
             session.setAttribute("UserPassword",request.getParameter("password"));
-            List<cart_item> cart = (List<cart_item>) session.getAttribute("cart");
-            if (cart != null || Objects.requireNonNull(cart).size() > 0) {
-                for (cart_item item : cart) {
-                    int itemid = item.getProduct().getId();
-                    int quantity = item.getQuantity();
-                    userid = Integer.parseInt((String) session.getAttribute("userid"));
-                    try {
-                        cartDAO.insertCartItem(itemid,userid,quantity);
-                    } catch (SQLException e) {
-                        e.printStackTrace();
-                    }
-                }
 
-            }
         }
     }
 }
