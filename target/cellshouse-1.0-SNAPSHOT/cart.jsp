@@ -213,8 +213,10 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <%List<cart_item> cart = new ArrayList<cart_item>();
+                                <%List<cart_item> cart = new ArrayList<>();
+                                    System.out.println("cart.jsp" + session.getAttribute("cart"));
                                 cart = (List<cart_item>) session.getAttribute("cart");
+                                    System.out.println("cart.jsp" + cart.size());
                                 %>
                                 <% for (cart_item  item : cart) {%>
                                 <tr class="cart_item">
@@ -428,8 +430,8 @@
 <!-- Main Script -->
 <script src="js/main.js"></script>
 <script>
-    $(document).ready(function () {
-        $(this).data('old-value',0)
+    /*   $(document).ready(function () {
+        //$(this).data('old-value',0)
     $(".qty").change(function () {
         let currentRow = $(this).closest("tr")
         currentRow.find("#subtotal").text("€" + (currentRow.find("#price").text().replace("€","") * $(this).val()).toFixed(2));
@@ -473,7 +475,7 @@ function remove_item(){
        });
     });
     done = true;
-}
+}*/
 </script>
 
 </body>
