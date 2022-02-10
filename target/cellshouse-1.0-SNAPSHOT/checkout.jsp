@@ -1,4 +1,7 @@
-<%--
+<%@ page import="com.example.cellshouse.Model.Login" %>
+<%@ page import="com.example.cellshouse.Model.cart_item" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %><%--
   Created by IntelliJ IDEA.
   User: mehar
   Date: 05/01/2022
@@ -46,10 +49,20 @@
                 <div class="user-menu">
                     <ul>
                         <li><a href="profile.jsp"><i class="fa fa-user"></i> My Account</a></li>
-                        <li><a href="#"><i class="fa fa-heart"></i> Wishlist</a></li>
+
                         <li><a href="cart.jsp"><i class="fa fa-user"></i> My Cart</a></li>
                         <li><a href="checkout.jsp"><i class="fa fa-user"></i> Checkout</a></li>
+                        <%
+                           Login user = (Login) session.getAttribute("user");
+                            if (user == null) {
+                        %>
                         <li><a href="login.jsp"><i class="fa fa-user"></i> Login</a></li>
+                        <% } else {
+                        %>
+                        <li><a href="logout"><i class="fa fa-user"></i> Logout</a></li>
+                        <% }%>
+
+                        <a href=""> ${sessionScope.user}</a>>
                     </ul>
                 </div>
             </div>
@@ -90,9 +103,20 @@
                 </div>
             </div>
 
+            <%
+                double subtotal = 0.00;
+                if (session.getAttribute("cart") != null){
+                    List<cart_item> cart = new ArrayList<>();
+                    cart = (List<cart_item>) session.getAttribute("cart");
+
+                    for (cart_item  item : cart){
+                        subtotal += item.getProduct().getPrice() * item.getQuantity();
+                    }
+                }
+            %>
             <div class="col-sm-6">
                 <div class="shopping-item">
-                    <a href="cart.jsp">Cart - <span class="cart-amunt">$100</span> <i class="fa fa-shopping-cart"></i> <span class="product-count">5</span></a>
+                    <a href="cart.jsp">Cart - <span class="cart-amunt">€<%= String.format("%.2f",subtotal)%></span> <i class="fa fa-shopping-cart"></i> <span class="product-count">5</span></a>
                 </div>
             </div>
         </div>
@@ -117,7 +141,7 @@
 
                     <li><a href="cart.jsp">Cart</a></li>
                     <li class="active"><a href="checkout.jsp">Checkout</a></li>
-                    <li><a href="#">Category</a></li>
+
                     <li><a href="contact.jsp">Contact</a></li>
                 </ul>
             </div>
@@ -198,53 +222,53 @@
             <div class="col-md-8">
                 <div class="product-content-right">
                     <div class="woocommerce">
-                        <div class="woocommerce-info">Returning customer? <a class="showlogin" data-toggle="collapse" href="#login-form-wrap" aria-expanded="false" aria-controls="login-form-wrap">Click here to login</a>
-                        </div>
+<%--                        <div class="woocommerce-info">Returning customer? <a class="showlogin" data-toggle="collapse" href="#login-form-wrap" aria-expanded="false" aria-controls="login-form-wrap">Click here to login</a>--%>
+<%--                        </div>--%>
 
-                        <form id="login-form-wrap" class="login collapse" method="post">
-
-
-                            <p>If you have shopped with us before, please enter your details in the boxes below. If you are a new customer please proceed to the Billing &amp; Shipping section.</p>
-
-                            <p class="form-row form-row-first">
-                                <label for="username">Username or email <span class="required">*</span>
-                                </label>
-                                <input type="text" id="username" name="username" class="input-text">
-                            </p>
-                            <p class="form-row form-row-last">
-                                <label for="password">Password <span class="required">*</span>
-                                </label>
-                                <input type="password" id="password" name="password" class="input-text">
-                            </p>
-                            <div class="clear"></div>
+<%--                        <form id="login-form-wrap" class="login collapse" method="post">--%>
 
 
-                            <p class="form-row">
-                                <input type="submit" value="Login" name="login" class="button">
-                                <label class="inline" for="rememberme"><input type="checkbox" value="forever" id="rememberme" name="rememberme"> Remember me </label>
-                            </p>
-                            <p class="lost_password">
-                                <a href="#">Lost your password?</a>
-                            </p>
+<%--                            <p>If you have shopped with us before, please enter your details in the boxes below. If you are a new customer please proceed to the Billing &amp; Shipping section.</p>--%>
 
-                            <div class="clear"></div>
-                        </form>
+<%--                            <p class="form-row form-row-first">--%>
+<%--                                <label for="username">Username or email <span class="required">*</span>--%>
+<%--                                </label>--%>
+<%--                                <input type="text" id="username" name="username" class="input-text">--%>
+<%--                            </p>--%>
+<%--                            <p class="form-row form-row-last">--%>
+<%--                                <label for="password">Password <span class="required">*</span>--%>
+<%--                                </label>--%>
+<%--                                <input type="password" id="password" name="password" class="input-text">--%>
+<%--                            </p>--%>
+<%--                            <div class="clear"></div>--%>
 
-                        <div class="woocommerce-info">Have a coupon? <a class="showcoupon" data-toggle="collapse" href="#coupon-collapse-wrap" aria-expanded="false" aria-controls="coupon-collapse-wrap">Click here to enter your code</a>
-                        </div>
 
-                        <form id="coupon-collapse-wrap" method="post" class="checkout_coupon collapse">
+<%--                            <p class="form-row">--%>
+<%--                                <input type="submit" value="Login" name="login" class="button">--%>
+<%--                                <label class="inline" for="rememberme"><input type="checkbox" value="forever" id="rememberme" name="rememberme"> Remember me </label>--%>
+<%--                            </p>--%>
+<%--                            <p class="lost_password">--%>
+<%--                                <a href="#">Lost your password?</a>--%>
+<%--                            </p>--%>
 
-                            <p class="form-row form-row-first">
-                                <input type="text" value="" id="coupon_code" placeholder="Coupon code" class="input-text" name="coupon_code">
-                            </p>
+<%--                            <div class="clear"></div>--%>
+<%--                        </form>--%>
 
-                            <p class="form-row form-row-last">
-                                <input type="submit" value="Apply Coupon" name="apply_coupon" class="button">
-                            </p>
+<%--                        <div class="woocommerce-info">Have a coupon? <a class="showcoupon" data-toggle="collapse" href="#coupon-collapse-wrap" aria-expanded="false" aria-controls="coupon-collapse-wrap">Click here to enter your code</a>--%>
+<%--                        </div>--%>
 
-                            <div class="clear"></div>
-                        </form>
+<%--                        <form id="coupon-collapse-wrap" method="post" class="checkout_coupon collapse">--%>
+
+<%--                            <p class="form-row form-row-first">--%>
+<%--                                <input type="text" value="" id="coupon_code" placeholder="Coupon code" class="input-text" name="coupon_code">--%>
+<%--                            </p>--%>
+
+<%--                            <p class="form-row form-row-last">--%>
+<%--                                <input type="submit" value="Apply Coupon" name="apply_coupon" class="button">--%>
+<%--                            </p>--%>
+
+<%--                            <div class="clear"></div>--%>
+<%--                        </form>--%>
 
                         <form enctype="multipart/form-data" action="#" class="checkout" method="post" name="checkout">
 
@@ -890,18 +914,30 @@
                                     </tr>
                                     </thead>
                                     <tbody>
+                                    <%List<cart_item> cart = new ArrayList<>();
+                                        System.out.println("cart.jsp" + session.getAttribute("cart"));
+                                        cart = (List<cart_item>) session.getAttribute("cart");
+                                        double totalOfSubtotal = 0.00;
+                                        for (cart_item  item : cart){
+                                            totalOfSubtotal += item.getProduct().getPrice() * item.getQuantity();
+                                        }
+
+                                        System.out.println("cart.jsp" + cart.size());
+                                    %>
+                                    <% for (cart_item  item : cart) {%>
                                     <tr class="cart_item">
                                         <td class="product-name">
-                                            Ship Your Idea <strong class="product-quantity">× 1</strong> </td>
+                                            <%= item.getProduct().getName()%> <strong class="product-quantity">× <%= item.getQuantity()%></strong> </td>
                                         <td class="product-total">
-                                            <span class="amount">£15.00</span> </td>
+                                            <span class="amount">€<%= String.format("%.2f", item.getQuantity() * item.getProduct().getPrice())%></span> </td>
                                     </tr>
+                                    <%}%>
                                     </tbody>
                                     <tfoot>
 
                                     <tr class="cart-subtotal">
                                         <th>Cart Subtotal</th>
-                                        <td><span class="amount">£15.00</span>
+                                        <td><span class="amount">€<%= String.format("%.2f", totalOfSubtotal)%></span>
                                         </td>
                                     </tr>
 
@@ -917,7 +953,7 @@
 
                                     <tr class="order-total">
                                         <th>Order Total</th>
-                                        <td><strong><span class="amount">£15.00</span></strong> </td>
+                                        <td><strong><span class="amount">€<%= String.format("%.2f", totalOfSubtotal)%></span></strong> </td>
                                     </tr>
 
                                     </tfoot>
@@ -949,19 +985,29 @@
                                             </div>
                                         </li>
                                     </ul>
-
-                                    <div class="form-row place-order">
-
-                                        <input type="submit" data-value="Place order" value="Place order" id="place_order" name="woocommerce_checkout_place_order" class="button alt">
-
-
-                                    </div>
-
-                                    <div class="clear"></div>
-
                                 </div>
                             </div>
                         </form>
+                            <div class="form-row place-order">
+
+                                <%--                                        <input type="submit" data-value="Place order" value="Place order" id="place_order" name="checkout_place_order" class="button alt">--%>
+                                <button id="MyBtn">Place Order</button>
+                                <!-- The Modal -->
+                                <div id="myModal" class="modal">
+
+                                    <!-- Modal content -->
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <span class="close">&times;</span>
+                                            <h2>Order Info</h2>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>Your Order Has Been Placed!!!</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <div class="clear"></div>
 
                     </div>
                 </div>
@@ -1063,5 +1109,32 @@
 
 <!-- Main Script -->
 <script src="js/main.js"></script>
+<script>
+    // Get the modal
+    var modal = document.getElementById("myModal");
+
+    // Get the button that opens the modal
+    var btn = document.getElementById("MyBtn");
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks the button, open the modal
+    btn.onclick = function() {
+        modal.style.display = "block";
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
 </body>
 </html>

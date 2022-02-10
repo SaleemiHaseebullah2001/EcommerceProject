@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -46,7 +47,7 @@
         <div class="user-menu">
           <ul>
             <li><a href="profile.jsp"><i class="fa fa-user"></i> My Account</a></li>
-            <li><a href="#"><i class="fa fa-heart"></i> Wishlist</a></li>
+
             <li><a href="cart.jsp"><i class="fa fa-user"></i> My Cart</a></li>
             <li><a href="checkout.jsp"><i class="fa fa-user"></i> Checkout</a></li>
             <li><a href="login.jsp"><i class="fa fa-user"></i> Login</a></li>
@@ -89,12 +90,6 @@
           <h1><a href="index.jsp"><img src="img/Cells_House_LogoWeb.png" alt=""></a></h1>
         </div>
       </div>
-
-      <div class="col-sm-6">
-        <div class="shopping-item">
-          <a href="cart.jsp">Cart - <span class="cart-amunt">$100</span> <i class="fa fa-shopping-cart"></i> <span class="product-count">5</span></a>
-        </div>
-      </div>
     </div>
   </div>
 </div> <!-- End site branding area -->
@@ -117,7 +112,7 @@
 
           <li><a href="cart.jsp">Cart</a></li>
           <!--<li><a href="checkout.jsp" >Checkout</a></li> -->
-          <li><a href="#">Category</a></li>
+
           <li class="active"><a href="contact.jsp">Contact</a></li>
         </ul>
       </div>
@@ -178,7 +173,7 @@
 
 
               <p class="form-row">
-                <input type="submit" value="Send" name="send" class="button">
+                <input type="submit" value="Send" name="send" class="button" style="clear: both">
               </p>
 
               <div class="clear"></div>

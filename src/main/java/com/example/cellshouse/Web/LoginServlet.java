@@ -53,10 +53,15 @@ public class LoginServlet extends HttpServlet {
                                 e.printStackTrace();
                             }
                         }
-                        session.setAttribute("cart",null);
+//                        session.setAttribute("cart",null);
                     }
+                    destPage = "cart.jsp";
                 }
-                destPage = "index.jsp";
+                else{
+                    request.setAttribute("useremail","Ciao " + user.getEmail());
+                    destPage = "index.jsp";
+                }
+
             } else {
                 String message = "Invalid email/password";
                 request.setAttribute("message", message);

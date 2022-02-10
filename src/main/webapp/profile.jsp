@@ -1,3 +1,5 @@
+<%@ page import="com.example.cellshouse.Model.Login" %>
+<%@ page import="com.example.cellshouse.Model.RegisterBean" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -40,10 +42,20 @@
                 <div class="user-menu">
                     <ul>
                         <li><a href="profile.jsp"><i class="fa fa-user"></i> My Account</a></li>
-                        <li><a href="#"><i class="fa fa-heart"></i> Wishlist</a></li>
+
                         <li><a href="cart.jsp"><i class="fa fa-user"></i> My Cart</a></li>
                         <li><a href="checkout.jsp"><i class="fa fa-user"></i> Checkout</a></li>
+                        <%
+                           Login user = (Login) session.getAttribute("user");
+                            if (user == null) {
+                        %>
                         <li><a href="login.jsp"><i class="fa fa-user"></i> Login</a></li>
+                        <% } else {
+                        %>
+                        <li><a href="logout"><i class="fa fa-user"></i> Logout</a></li>
+                        <% }%>
+
+                        <a href=""> ${sessionScope.user}</a>>
                     </ul>
                 </div>
             </div>
@@ -111,7 +123,7 @@
 
                     <li><a href="cart.jsp">Cart</a></li>
                     <!--<li><a href="checkout.jsp" >Checkout</a></li> -->
-                    <li><a href="#">Category</a></li>
+
                     <li><a href="contact.jsp">Contact</a></li>
                 </ul>
             </div>
@@ -129,38 +141,46 @@
                         <a class="nav-link active" id="home-tab" data-toggle="tab" href="profile.jsp" role="tab" aria-controls="home" aria-selected="false">Profile</a>
                     </li>
                 </ul>
-                <form>
+                <%
+                    RegisterBean userdata = (RegisterBean) request.getAttribute("userdata");
+
+                %>
+                <form action="profile" method="get">
                     <hr class="my-4" />
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="firstname">Firstname</label>
-                            <input type="text" id="firstname" class="form-control" placeholder="Brown" />
+                            <input type="text" id="firstname" class="form-control" placeholder="" value="<%= userdata.getName()%>"  />
                         </div>
                         <div class="form-group col-md-6">
                             <label for="lastname">Lastname</label>
-                            <input type="text" id="lastname" class="form-control" placeholder="Asher" />
+                            <input type="text" id="lastname" class="form-control" placeholder="" value="<%= userdata.getSurname()%>"  />
                         </div>
                     </div>
                     <div class="form-group col-md-6">
                         <label for="inputEmail4">Email</label>
-                        <input type="email" class="form-control" id="inputEmail4" placeholder="brown@asher.me" />
+                        <input type="email" class="form-control" id="inputEmail4" placeholder="" value="<%= userdata.getEmail()%>"/>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="pnumber">Phone Number</label>
+                        <input type="text" class="form-control" id="pnumber" placeholder="" value="<%= userdata.getPnumber()%>"/>
                     </div>
                     <div class="form-group">
                         <div class="form-group col-md-6">
                             <label for="firstname">Address</label>
-                            <input type="text" id="address" class="form-control" placeholder="via/piazza" />
+                            <input type="text" id="address" class="form-control" placeholder="" value="<%= userdata.getStreet()%>"/>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="lastname">Cap</label>
-                            <input type="text" id="cap" class="form-control" placeholder="cap" />
+                            <input type="text" id="cap" class="form-control" placeholder="" value="<%= userdata.getZip()%>"/>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="lastname">City</label>
-                            <input type="text" id="city" class="form-control" placeholder="city" />
+                            <input type="text" id="city" class="form-control" placeholder="" value="<%= userdata.getCity()%>"/>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="lastname">State</label>
-                            <input type="text" id="state" class="form-control" placeholder="state" />
+                            <input type="text" id="state" class="form-control" placeholder="" value="<%= userdata.getState()%>"/>
                         </div>
                     </div>
                 </form>
@@ -170,21 +190,23 @@
                             <a class="nav-link active" id="change-password" data-toggle="tab" href="profile.jsp" role="tab" aria-controls="change-password" aria-selected="false">Change Password</a>
                         </li>
                     </ul>
-                <form>
+                <form action="profile" method="post">
                     <hr class="my-5" />
                     <div class="row col-md-6">
                         <div class="col-md-6">
                             <div class="form-group">
+                                <p style="color: red"><%= request.getAttribute("msg") ==null ?"": request.getAttribute("msg") %></p>
                                 <label for="inputPassword4">Old Password</label>
-                                <input type="password" class="form-control" id="inputPassword4" />
+                                <input type="password" class="form-control" id="inputPassword4" name="oldpassword" />
                             </div>
                             <div class="form-group">
                                 <label for="inputPassword5">New Password</label>
-                                <input type="password" class="form-control" id="inputPassword5" />
+                                <input type="password" class="form-control" id="inputPassword5" name="newpassword" />
                             </div>
                             <div class="form-group">
                                 <label for="inputPassword6">Confirm Password</label>
-                                <input type="password" class="form-control" id="inputPassword6" />
+                                <input type="password" class="form-control" id="inputPassword6" name="confirmpassword" />
+                                <p style="color: green"><%= request.getAttribute("message") ==null ?"": request.getAttribute("message") %></p>
                             </div>
                         </div>
                         <div class="col-md-6">

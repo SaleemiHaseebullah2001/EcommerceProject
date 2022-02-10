@@ -1,7 +1,8 @@
 <%@ page import="com.example.cellshouse.Model.Product" %>
 <%@ page import="com.example.cellshouse.Model.cart_item" %>
 <%@ page import="java.util.List" %>
-<%@ page import="java.util.ArrayList" %><%--
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="com.example.cellshouse.Model.Login" %><%--
   Created by IntelliJ IDEA.
   User: mehar
   Date: 05/01/2022
@@ -49,10 +50,20 @@
                 <div class="user-menu">
                     <ul>
                         <li><a href="profile.jsp"><i class="fa fa-user"></i> My Account</a></li>
-                        <li><a href="#"><i class="fa fa-heart"></i> Wishlist</a></li>
+
                         <li><a href="cart.jsp"><i class="fa fa-user"></i> My Cart</a></li>
                         <li><a href="checkout.jsp"><i class="fa fa-user"></i> Checkout</a></li>
-                        <li><a href="#"><i class="fa fa-user"></i> Login</a></li>
+                        <%
+                           Login user = (Login) session.getAttribute("user");
+                            if (user == null) {
+                        %>
+                        <li><a href="login.jsp"><i class="fa fa-user"></i> Login</a></li>
+                        <% } else {
+                        %>
+                        <li><a href="logout"><i class="fa fa-user"></i> Logout</a></li>
+                        <% }%>
+
+                        <a href=""> ${sessionScope.user}</a>
                     </ul>
                 </div>
             </div>
@@ -93,9 +104,20 @@
                 </div>
             </div>
 
+            <%
+                double totalOfSubtotal = 0.00;
+                List<cart_item> cart = new ArrayList<>();
+                if (session.getAttribute("cart") != null){
+                    cart = (List<cart_item>) session.getAttribute("cart");
+
+                    for (cart_item  item : cart){
+                        totalOfSubtotal += item.getProduct().getPrice() * item.getQuantity();
+                    }
+                }
+            %>
             <div class="col-sm-6">
                 <div class="shopping-item">
-                    <a href="cart.jsp">Cart - <span class="cart-amunt">$800</span> <i class="fa fa-shopping-cart"></i> <span class="product-count">5</span></a>
+                    <a href="cart.jsp">Cart - <span class="cart-amunt">€<%=String.format("%.2f", totalOfSubtotal)%></span> <i class="fa fa-shopping-cart"></i> <span class="product-count"><%=cart.size()%></span></a>
                 </div>
             </div>
         </div>
@@ -119,7 +141,7 @@
                     <li><a href="<%=request.getContextPath()%>/shop">Shop page</a></li>
                     <li class="active"><a href="cart.jsp">Cart</a></li>
                     <!--<li><a href="checkout.jsp" >Checkout</a></li> -->
-                    <li><a href="#">Category</a></li>
+
                     <li><a href="contact.jsp">Contact</a></li>
                 </ul>
             </div>
@@ -144,59 +166,6 @@
     <div class="zigzag-bottom"></div>
     <div class="container">
         <div class="row">
-            <div class="col-md-4">
-                <div class="single-sidebar">
-                    <h2 class="sidebar-title">Search Products</h2>
-                    <form action="#">
-                        <input type="text" placeholder="Search products...">
-                        <input type="submit" value="Search">
-                    </form>
-                </div>
-
-                <div class="single-sidebar">
-                    <h2 class="sidebar-title">Products</h2>
-                    <div class="thubmnail-recent">
-                        <img src="img/product-thumb-1.jpg" class="recent-thumb" alt="">
-                        <h2><a href="single-product.jsp">Sony Smart TV - 2015</a></h2>
-                        <div class="product-sidebar-price">
-                            <ins>$700.00</ins> <del>$800.00</del>
-                        </div>
-                    </div>
-                    <div class="thubmnail-recent">
-                        <img src="img/product-thumb-1.jpg" class="recent-thumb" alt="">
-                        <h2><a href="single-product.jsp">Sony Smart TV - 2015</a></h2>
-                        <div class="product-sidebar-price">
-                            <ins>$700.00</ins> <del>$800.00</del>
-                        </div>
-                    </div>
-                    <div class="thubmnail-recent">
-                        <img src="img/product-thumb-1.jpg" class="recent-thumb" alt="">
-                        <h2><a href="single-product.jsp">Sony Smart TV - 2015</a></h2>
-                        <div class="product-sidebar-price">
-                            <ins>$700.00</ins> <del>$800.00</del>
-                        </div>
-                    </div>
-                    <div class="thubmnail-recent">
-                        <img src="img/product-thumb-1.jpg" class="recent-thumb" alt="">
-                        <h2><a href="single-product.jsp">Sony Smart TV - 2015</a></h2>
-                        <div class="product-sidebar-price">
-                            <ins>$700.00</ins> <del>$800.00</del>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="single-sidebar">
-                    <h2 class="sidebar-title">Recent Posts</h2>
-                    <ul>
-                        <li><a href="#">Sony Smart TV - 2015</a></li>
-                        <li><a href="#">Sony Smart TV - 2015</a></li>
-                        <li><a href="#">Sony Smart TV - 2015</a></li>
-                        <li><a href="#">Sony Smart TV - 2015</a></li>
-                        <li><a href="#">Sony Smart TV - 2015</a></li>
-                    </ul>
-                </div>
-            </div>
-
             <div class="col-md-8">
                 <div class="product-content-right">
                     <div class="woocommerce">
@@ -213,44 +182,45 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <%List<cart_item> cart = new ArrayList<>();
-                                    System.out.println("cart.jsp" + session.getAttribute("cart"));
-                                cart = (List<cart_item>) session.getAttribute("cart");
-                                    System.out.println("cart.jsp" + cart.size());
-                                %>
-                                <% for (cart_item  item : cart) {%>
-                                <tr class="cart_item">
-                                    <input type="hidden" class="item_id" value="<%= item.getProduct().getId()%>">
-                                    <td class="product-remove">
-                                        <input type="button" class="remove_item btn-danger" value="X" onclick="remove_item()">
-<%--                                        <button class="remove_item btn-danger" onclick="remove_item()">X</button>--%>
-                                    </td>
+                                <% if (!cart.isEmpty()){%>
 
-                                    <td class="product-thumbnail">
-                                        <a href="single-product?id=<%= item.getProduct().getId()%>"> <img width="145" height="145" alt="poster_1_up" class="shop_thumbnail" src="<%= item.getProduct().getImage()%>"></a>
-                                    </td>
 
-                                    <td class="product-name">
-                                        <a href="single-product?id=<%= item.getProduct().getId()%>"><%= item.getProduct().getName()%></a>
-                                    </td>
+                                    <% for (cart_item  item : cart) {%>
+                                    <tr class="cart_item">
+                                        <input type="hidden" class="item_id" value="<%= item.getProduct().getId()%>">
+                                        <td class="product-remove">
+                                            <input type="button" class="remove_item btn-danger" value="X" onclick="remove_item()">
+    <%--                                        <button class="remove_item btn-danger" onclick="remove_item()">X</button>--%>
+                                        </td>
 
-                                    <td class="product-price">
-                                        <span class="amount" id="price"><span>€</span><%=String.format("%.2f", item.getProduct().getPrice())%></span>
-                                    </td>
+                                        <td class="product-thumbnail">
+                                            <a href="single-product?id=<%= item.getProduct().getId()%>"> <img width="145" height="145" alt="poster_1_up" class="shop_thumbnail" src="<%= item.getProduct().getImage()%>"></a>
+                                        </td>
 
-                                    <td class="product-quantity">
-                                        <div class="quantity buttons_added">
-                                            <input type="button" class="minus" value="-">
-                                            <input type="number" size="4" class="input-text qty text" title="Qty" value="<%= item.getQuantity()%>" min="0" step="1" data-old-value="0">
-                                            <input type="button" class="plus" value="+">
-                                        </div>
-                                    </td>
+                                        <td class="product-name">
+                                            <a href="single-product?id=<%= item.getProduct().getId()%>"><%= item.getProduct().getName()%></a>
+                                        </td>
 
-                                    <td class="product-subtotal">
-                                        <span class="amount" id="subtotal">€<%= String.format("%.2f", item.getQuantity() * item.getProduct().getPrice())%></span>
-                                    </td>
-                                </tr>
-                                <% } %>
+                                        <td class="product-price">
+                                            <span class="amount" id="price"><span>€</span><%=String.format("%.2f", item.getProduct().getPrice())%></span>
+                                        </td>
+
+                                        <td class="product-quantity">
+                                            <div class="quantity buttons_added">
+                                                <input type="button" class="minus" value="-">
+                                                <input type="number" size="4" class="input-text qty text" title="Qty" value="<%= item.getQuantity()%>" min="0" step="1" data-old-value="0">
+                                                <input type="button" class="plus" value="+">
+                                            </div>
+                                        </td>
+
+                                        <td class="product-subtotal">
+                                            <span class="amount" id="subtotal">€<%= String.format("%.2f", item.getQuantity() * item.getProduct().getPrice())%></span>
+                                        </td>
+                                    </tr>
+                                    <% }%>
+                                <%}else{%>
+                                    <p style="color: red; font-family: 'Arial'; font-size: 20px";  > Cart is empty.</p>
+                                <%}%>
                                 <tr>
                                     <td class="actions" colspan="6">
                                         <div class="coupon">

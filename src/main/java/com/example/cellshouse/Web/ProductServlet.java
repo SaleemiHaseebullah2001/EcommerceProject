@@ -8,6 +8,7 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Collections;
 import java.util.List;
 
 @WebServlet(name = "ProductServlet", value = "/")
@@ -51,6 +52,10 @@ public class ProductServlet extends HttpServlet {
 
     private void getProduct(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
         int id = Integer.parseInt(request.getParameter("id"));
+        List <Product> products = productDAO.getAllProducts();
+        Collections.shuffle(products);
+        products = products.subList(1,6);
+        request.setAttribute("productlist", products);
         Product product = productDAO.getProductById(id);
         request.setAttribute("product", product);
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("single-product.jsp");

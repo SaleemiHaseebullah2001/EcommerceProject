@@ -1,4 +1,8 @@
-<%@ page import="com.example.cellshouse.Model.Login" %>
+        <%@ page import="com.example.cellshouse.Model.Login" %>
+<%@ page import="com.example.cellshouse.Model.Product" %>
+<%@ page import="java.util.List" %>
+<%@ page import="com.example.cellshouse.Model.cart_item" %>
+<%@ page import="java.util.ArrayList" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page session="true" %>
 <!DOCTYPE html>
@@ -39,12 +43,11 @@
             <div class="col-md-8">
                 <div class="user-menu">
                     <ul>
-                        <li><a href="profile.jsp"><i class="fa fa-user"></i> My Account</a></li>
-                        <li><a href="#"><i class="fa fa-heart"></i> Wishlist</a></li>
+                        <li><a href="profile"><i class="fa fa-user"></i> My Account</a></li>
                         <li><a href="cart.jsp"><i class="fa fa-user"></i> My Cart</a></li>
                         <li><a href="checkout.jsp"><i class="fa fa-user"></i> Checkout</a></li>
                         <%
-                           Login user = (Login) session.getAttribute("user");
+                            Login user = (Login) session.getAttribute("user");
                             if (user == null) {
                         %>
                         <li><a href="login.jsp"><i class="fa fa-user"></i> Login</a></li>
@@ -52,9 +55,10 @@
                         %>
                         <li><a href="logout"><i class="fa fa-user"></i> Logout</a></li>
                         <% }%>
-
+                        <p style="padding-right: 5px" id="print-email">${useremail}</p>
                         <a href=""> ${sessionScope.user}</a>
                     </ul>
+
                 </div>
             </div>
 
@@ -93,10 +97,20 @@
                     <h1><a href="index.jsp"><img src="img/Cells_House_LogoWeb.png" alt=""></a></h1>
                 </div>
             </div>
+            <%
+                double totalOfSubtotal = 0.00;
+                List<cart_item> cart = new ArrayList<>();
+                if (session.getAttribute("cart") != null) {
+                    cart = (List<cart_item>) session.getAttribute("cart");
 
+                    for (cart_item item : cart) {
+                        totalOfSubtotal += item.getProduct().getPrice() * item.getQuantity();
+                    }
+                }
+            %>
             <div class="col-sm-6">
                 <div class="shopping-item">
-                    <a href="cart.jsp">Cart - <span class="cart-amunt">$100</span> <i class="fa fa-shopping-cart"></i> <span class="product-count">5</span></a>
+                    <a href="cart.jsp">Cart - <span class="cart-amunt">€<%=String.format("%.2f", totalOfSubtotal)%></span> <i class="fa fa-shopping-cart"></i> <span class="product-count"><%=cart.size()%></span></a>
                 </div>
             </div>
         </div>
@@ -120,7 +134,7 @@
                     <li><a href="<%=request.getContextPath()%>/shop">Shop page</a></li>
                     <li><a href="cart.jsp">Cart</a></li>
                     <!--<li><a href="checkout.jsp" >Checkout</a></li> -->
-                    <li><a href="#">Category</a></li>
+
                     <li><a href="contact.jsp">Contact</a></li>
                 </ul>
             </div>
@@ -139,7 +153,7 @@
                         iPhone <span class="primary">13</span>
                     </h2>
 
-                    <a class="caption button-radius" href="shop.jsp"><span class="icon"></span>Shop now</a>
+                    <a class="caption button-radius" href="<%=request.getContextPath()%>/shop"><span class="icon"></span>Shop now</a>
                 </div>
             </li>
             <li><img src="img/slide_banner/banner_samsung11.png.jpg" alt="Slide">
@@ -147,7 +161,7 @@
                     <h2 class="caption title">
                         Samsung <span class="primary">S21 Ultra </span>
                     </h2>
-                    <a class="caption button-radius" href="shop.jsp"><span class="icon"></span>Shop now</a>
+                    <a class="caption button-radius" href="<%=request.getContextPath()%>/shop"><span class="icon"></span>Shop now</a>
                 </div>
             </li>
             <li><img src="img/slide_banner/banner_oppo.png" alt="Slide">
@@ -155,7 +169,7 @@
                     <h2 class="caption title">
                         Oppo <span class="primary">Reno6 5G <strong></strong></span>
                     </h2>
-                    <a class="caption button-radius" href="shop.jsp"><span class="icon"></span>Shop now</a>
+                    <a class="caption button-radius" href="<%=request.getContextPath()%>/shop"><span class="icon"></span>Shop now</a>
                 </div>
             </li>
             <li><img src="img/slide_banner/banner_xiaomi.png" alt="Slide">
@@ -163,7 +177,7 @@
                     <h2 class="caption title">
                         Xiaomi <span class="primary">11T </span>
                     </h2>
-                    <a class="caption button-radius" href="shop.jsp"><span class="icon"></span>Shop now</a>
+                    <a class="caption button-radius" href="<%=request.getContextPath()%>/shop"><span class="icon"></span>Shop now</a>
                 </div>
             </li>
         </ul>
@@ -213,7 +227,7 @@
                     <div class="product-carousel">
                         <div class="single-product">
                             <div class="product-f-image">
-                                <img src="img/products/iphone13-removebg-preview.png" alt="">
+                                <img src="https://res.cloudinary.com/cellshouse/image/upload/v1644402727/iphone_13_uv2tou.jpg" alt="">
                                 <div class="product-hover">
                                     <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
                                     <a href="single-product.jsp" class="view-details-link"><i class="fa fa-link"></i> See details</a>
@@ -228,7 +242,7 @@
                         </div>
                         <div class="single-product">
                             <div class="product-f-image">
-                                <img src="img/products/iphone_12-removebg-preview.png" alt="">
+                                <img src="https://res.cloudinary.com/cellshouse/image/upload/v1644402727/iphone_12_pqktxh.jpg" alt="">
                                 <div class="product-hover">
                                     <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
                                     <a href="single-product.jsp" class="view-details-link"><i class="fa fa-link"></i> See details</a>
@@ -242,7 +256,7 @@
                         </div>
                         <div class="single-product">
                             <div class="product-f-image">
-                                <img src="img/products/xiaomi11ultra-removebg-preview.png" alt="">
+                                <img src="https://res.cloudinary.com/cellshouse/image/upload/v1644402728/xiaomi_mi_11_ultra_yqpozq.jpg" alt="">
                                 <div class="product-hover">
                                     <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
                                     <a href="single-product.jsp" class="view-details-link"><i class="fa fa-link"></i> See details</a>
@@ -257,7 +271,7 @@
                         </div>
                         <div class="single-product">
                             <div class="product-f-image">
-                                <img src="img/products/a52s-removebg-preview.png" alt="">
+                                <img src="https://res.cloudinary.com/cellshouse/image/upload/v1644402728/samsung_a52s_do7qxl.jpg" alt="">
                                 <div class="product-hover">
                                     <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
                                     <a href="single-product.jsp" class="view-details-link"><i class="fa fa-link"></i> See details</a>
@@ -272,7 +286,7 @@
                         </div>
                         <div class="single-product">
                             <div class="product-f-image">
-                                <img src="img/products/s20_fe-removebg-preview.png" alt="">
+                                <img src="https://res.cloudinary.com/cellshouse/image/upload/v1644402728/samsung_s20_fe_p1ilw4.jpg" alt="">
                                 <div class="product-hover">
                                     <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
                                     <a href="single-product.jsp" class="view-details-link"><i class="fa fa-link"></i> See details</a>
@@ -287,7 +301,7 @@
                         </div>
                         <div class="single-product">
                             <div class="product-f-image">
-                                <img src="img/products/iphone_11_pro-removebg-preview.png" alt="">
+                                <img src="https://res.cloudinary.com/cellshouse/image/upload/v1644402648/iphone_11_pro_cethk4.jpg" alt="">
                                 <div class="product-hover">
                                     <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
                                     <a href="single-product.jsp" class="view-details-link"><i class="fa fa-link"></i> See details</a>
@@ -335,7 +349,7 @@
                     <h2 class="product-wid-title">Top Sellers</h2>
                     <a href="" class="wid-view-more">View All</a>
                     <div class="single-wid-product">
-                        <a href="single-product.jsp"><img src="img/products/xiaomi11t-removebg-preview.png" alt="" class="product-thumb"></a>
+                        <a href="single-product.jsp"><img src="https://res.cloudinary.com/cellshouse/image/upload/v1644402728/xiaomi_11t_ukki6q.jpg" height="120" width="80" alt="" class="product-thumb"></a>
                         <h2><a href="single-product.jsp">Xiaomi 11T</a></h2>
                         <div class="product-wid-rating">
                             <i class="fa fa-star"></i>
@@ -349,7 +363,7 @@
                         </div>
                     </div>
                     <div class="single-wid-product">
-                        <a href="single-product.jsp"><img src="img/products/redmi_note_10_prooo-removebg-preview.png" alt="" class="product-thumb"></a>
+                        <a href="single-product.jsp"><img src="https://res.cloudinary.com/cellshouse/image/upload/v1644402727/redmi_note_10_pro_u0pqir.jpg" alt="" class="product-thumb"></a>
                         <h2><a href="single-product.jsp">Redmi Note 10 Pro</a></h2>
                         <div class="product-wid-rating">
                             <i class="fa fa-star"></i>
@@ -363,7 +377,7 @@
                         </div>
                     </div>
                     <div class="single-wid-product">
-                        <a href="single-product.jsp"><img src="img/products/iphone_11_pro-removebg-preview.png" alt="" class="product-thumb"></a>
+                        <a href="single-product.jsp"><img src="https://res.cloudinary.com/cellshouse/image/upload/v1644402648/iphone_11_pro_cethk4.jpg" alt="" class="product-thumb"></a>
                         <h2><a href="single-product.jsp">Iphone 11 Pro</a></h2>
                         <div class="product-wid-rating">
                             <i class="fa fa-star"></i>
@@ -383,7 +397,7 @@
                     <h2 class="product-wid-title">Recently Viewed</h2>
                     <a href="#" class="wid-view-more">View All</a>
                     <div class="single-wid-product">
-                        <a href="single-product.jsp"><img src="img/products/iphone_12-removebg-preview.png" alt="" class="product-thumb"></a>
+                        <a href="single-product.jsp"><img src="https://res.cloudinary.com/cellshouse/image/upload/v1644402727/iphone_12_pqktxh.jpg" alt="" class="product-thumb"></a>
                         <h2><a href="single-product.jsp">Iphone 12</a></h2>
                         <div class="product-wid-rating">
                             <i class="fa fa-star"></i>
@@ -397,7 +411,7 @@
                         </div>
                     </div>
                     <div class="single-wid-product">
-                        <a href="single-product.jsp"><img src="img/products/oppo_reno6_pro-removebg-preview.png" alt="" class="product-thumb"></a>
+                        <a href="single-product.jsp"><img src="https://res.cloudinary.com/cellshouse/image/upload/v1644402727/oppo_reno6_pro_qtohtc.jpg" alt="" class="product-thumb"></a>
                         <h2><a href="single-product.jsp">Oppo Reno6 Pro</a></h2>
                         <div class="product-wid-rating">
                             <i class="fa fa-star"></i>
@@ -411,7 +425,7 @@
                         </div>
                     </div>
                     <div class="single-wid-product">
-                        <a href="single-product.jsp"><img src="img/products/a52s-removebg-preview.png" alt="" class="product-thumb"></a>
+                        <a href="single-product.jsp"><img src="https://res.cloudinary.com/cellshouse/image/upload/v1644402728/samsung_a52s_do7qxl.jpg" alt="" class="product-thumb"></a>
                         <h2><a href="single-product.jsp">Samsung A52s 5G</a></h2>
                         <div class="product-wid-rating">
                             <i class="fa fa-star"></i>
@@ -431,7 +445,7 @@
                     <h2 class="product-wid-title">Top New</h2>
                     <a href="#" class="wid-view-more">View All</a>
                     <div class="single-wid-product">
-                        <a href="single-product.jsp"><img src="img/products/iphone13-removebg-preview.png" alt="" class="product-thumb"></a>
+                        <a href="single-product.jsp"><img src="https://res.cloudinary.com/cellshouse/image/upload/v1644402727/iphone_13_uv2tou.jpg" alt="" class="product-thumb"></a>
                         <h2><a href="single-product.jsp">Iphone 13</a></h2>
                         <div class="product-wid-rating">
                             <i class="fa fa-star"></i>
@@ -445,7 +459,7 @@
                         </div>
                     </div>
                     <div class="single-wid-product">
-                        <a href="single-product.jsp"><img src="img/products/s21ultra-removebg-preview.png" alt="" class="product-thumb"></a>
+                        <a href="single-product.jsp"><img src="https://res.cloudinary.com/cellshouse/image/upload/v1644402728/samsung_s21_ultra_ksrhls.jpg" alt="" class="product-thumb"></a>
                         <h2><a href="single-product.jsp">Samsung S21 Ultra</a></h2>
                         <div class="product-wid-rating">
                             <i class="fa fa-star"></i>
@@ -459,7 +473,7 @@
                         </div>
                     </div>
                     <div class="single-wid-product">
-                        <a href="single-product.jsp"><img src="img/products/xiaomi11ultra-removebg-preview.png" alt="" class="product-thumb"></a>
+                        <a href="single-product.jsp"><img src="https://res.cloudinary.com/cellshouse/image/upload/v1644402728/xiaomi_mi_11_ultra_yqpozq.jpg" alt="" class="product-thumb"></a>
                         <h2><a href="single-product.jsp">Sony playstation microsoft</a></h2>
                         <div class="product-wid-rating">
                             <i class="fa fa-star"></i>

@@ -61,4 +61,48 @@ public class RegisterDAO {
         }
         return "Oops.. Something went wrong!";  // On failure, send a message from here.
     }
+    public RegisterBean getUserDataById(int id) throws SQLException {
+        Connection connection = MySQLService.getDBConnection();
+        String sql = "SELECT * FROM registration WHERE id = ?";
+        PreparedStatement statement = connection.prepareStatement(sql);
+        statement.setInt(1, id);
+
+        ResultSet result = statement.executeQuery();
+
+        RegisterBean user = null;
+
+        if (result.next()) {
+            user = new RegisterBean();
+            user.setEmail(result.getString("email"));
+            user.setPassword(result.getString("password"));
+            user.setName(result.getString("name"));
+            user.setSurname(result.getString("surname"));
+            user.setPnumber(result.getString("pnumber"));
+            user.setGender(result.getString("gender"));
+            user.setStreet(result.getString("street"));
+            user.setNumber(result.getString("number"));
+            user.setCity(result.getString("city"));
+            user.setZip(result.getString("zip"));
+            user.setState(result.getString("state"));
+
+        }
+
+        connection.close();
+
+        return user;
+    }
+    public boolean updatePassword(int id, String newpassword, String confirmpassword) throws SQLException {
+        boolean status = false;
+        Connection connection = MySQLService.getDBConnection();
+        String sql = "UPDATE registration SET password=? WHERE id=?";
+        PreparedStatement statement = connection.prepareStatement(sql);
+        statement.setString(1,newpassword);
+        statement.setInt(2, id);
+
+        int result = statement.executeUpdate();
+        if (result > 0){
+            status = true;
+        }
+        return status;
+    }
 }

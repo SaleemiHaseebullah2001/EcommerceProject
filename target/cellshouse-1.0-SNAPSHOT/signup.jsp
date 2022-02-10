@@ -40,7 +40,7 @@
                 <div class="user-menu">
                     <ul>
                         <li><a href="profile.jsp"><i class="fa fa-user"></i> My Account</a></li>
-                        <li><a href="#"><i class="fa fa-heart"></i> Wishlist</a></li>
+
                         <li><a href="cart.jsp"><i class="fa fa-user"></i> My Cart</a></li>
                         <li><a href="checkout.jsp"><i class="fa fa-user"></i> Checkout</a></li>
                         <li><a href="login.jsp"><i class="fa fa-user"></i> Login</a></li>
@@ -111,7 +111,7 @@
 
                     <li><a href="cart.jsp">Cart</a></li>
                     <!--<li><a href="checkout.jsp" >Checkout</a></li> -->
-                    <li><a href="#">Category</a></li>
+
                     <li><a href="contact.jsp">Contact</a></li>
                 </ul>
             </div>

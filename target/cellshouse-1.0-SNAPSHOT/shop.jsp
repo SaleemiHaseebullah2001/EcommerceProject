@@ -1,5 +1,8 @@
-<%@ page import="java.util.List" %>
-<%@ page import="com.example.cellshouse.Model.Product" %><%--
+        <%@ page import="java.util.List" %>
+<%@ page import="com.example.cellshouse.Model.Product" %>
+<%@ page import="com.example.cellshouse.Model.Login" %>
+<%@ page import="com.example.cellshouse.Model.cart_item" %>
+<%@ page import="java.util.ArrayList" %><%--
   Created by IntelliJ IDEA.
   User: mehar
   Date: 05/01/2022
@@ -52,10 +55,20 @@ URL: https://www./CellsHouse/
                 <div class="user-menu">
                     <ul>
                         <li><a href="profile.jsp"><i class="fa fa-user"></i> My Account</a></li>
-                        <li><a href="#"><i class="fa fa-heart"></i> Wishlist</a></li>
+
                         <li><a href="cart.jsp"><i class="fa fa-user"></i> My Cart</a></li>
                         <li><a href="checkout.jsp"><i class="fa fa-user"></i> Checkout</a></li>
-                        <li><a href="#"><i class="fa fa-user"></i> Login</a></li>
+                        <%
+                            Login user = (Login) session.getAttribute("user");
+                            if (user == null) {
+                        %>
+                        <li><a href="login.jsp"><i class="fa fa-user"></i> Login</a></li>
+                        <% } else {
+                        %>
+                        <li><a href="logout"><i class="fa fa-user"></i> Logout</a></li>
+                        <% }%>
+
+                        <a href=""> ${sessionScope.user}</a>
                     </ul>
                 </div>
             </div>
@@ -96,9 +109,20 @@ URL: https://www./CellsHouse/
                 </div>
             </div>
 
+            <%
+                double totalOfSubtotal = 0.00;
+                List<cart_item> cart = new ArrayList<>();
+                if (session.getAttribute("cart") != null) {
+                    cart = (List<cart_item>) session.getAttribute("cart");
+
+                    for (cart_item item : cart) {
+                        totalOfSubtotal += item.getProduct().getPrice() * item.getQuantity();
+                    }
+                }
+            %>
             <div class="col-sm-6">
                 <div class="shopping-item">
-                    <a href="cart.jsp">Cart - <span class="cart-amunt">$100</span> <i class="fa fa-shopping-cart"></i> <span class="product-count">5</span></a>
+                    <a href="cart.jsp">Cart - <span class="cart-amunt">€<%=String.format("%.2f", totalOfSubtotal)%></span> <i class="fa fa-shopping-cart"></i> <span class="product-count"><%=cart.size()%></span></a>
                 </div>
             </div>
         </div>
@@ -122,7 +146,7 @@ URL: https://www./CellsHouse/
                     <li><a href="<%=request.getContextPath()%>/shop">Shop page</a></li>
                     <li><a href="cart.jsp">Cart</a></li>
                     <!--<li><a href="checkout.jsp" >Checkout</a></li> -->
-                    <li><a href="#">Category</a></li>
+
                     <li><a href="contact.jsp">Contact</a></li>
                 </ul>
             </div>
@@ -148,20 +172,20 @@ URL: https://www./CellsHouse/
     <div class="container">
         <div class="row">
             <%
-                List <Product> products = (List)request.getAttribute("productlist");
+                List<Product> products = (List) request.getAttribute("productlist");
                 %>
             <%
-                for (Product product : products){
+                for (Product product : products) {
             %>
 
-        <div class="col-md-3 col-sm-6">
+            <div class="col-md-3 col-sm-6">
                 <div class="single-shop-product">
                     <div class="product-upper">
-                        <img src="<%=product.getImage()%> " alt="" height="195" width="243"> <br>
+                        <img src="<%=product.getImage()%>" alt="" height="310" width="145"> <br>
                     </div>
                     <h2><a href="single-product?id=<%=product.getId()%>"><%=product.getName()%></a></h2>
                     <div class="product-carousel-price">
-                        <ins>€<%=String.format("%.2f",product.getPrice())%></ins> <del></del>
+                        <ins>€<%=String.format("%.2f", product.getPrice())%></ins> <del></del>
                     </div>
 
                     <div class="product-option-shop">
@@ -184,7 +208,6 @@ URL: https://www./CellsHouse/
 <%--                    <div class="product-carousel-price">--%>
 <%--                        <ins>€<%=String.format("%.2f",product.getPrice())%></ins> <del></del>--%>
 <%--                    </div>--%>
-
 <%--                    <div class="product-option-shop">--%>
 <%--                        <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow" href="">Add to cart</a>--%>
 <%--                    </div>--%>
@@ -199,7 +222,6 @@ URL: https://www./CellsHouse/
 <%--                    <div class="product-carousel-price">--%>
 <%--                        <ins>€<%=String.format("%.2f",product.getPrice())%></ins> <del></del>--%>
 <%--                    </div>--%>
-
 <%--                    <div class="product-option-shop">--%>
 <%--                        <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow" href="">Add to cart</a>--%>
 <%--                    </div>--%>
@@ -214,46 +236,16 @@ URL: https://www./CellsHouse/
 <%--                    <div class="product-carousel-price">--%>
 <%--                        <ins>€<%=String.format("%.2f",product.getPrice())%></ins> <del></del>--%>
 <%--                    </div>--%>
-<%--                    <br>--%>
 <%--                    <div class="product-option-shop">--%>
 <%--                        <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow" href="">Add to cart</a>--%>
 <%--                    </div>--%>
 <%--                </div>--%>
 <%--            </div>--%>
+                <div class="row">
 <%--            <div class="col-md-3 col-sm-6">--%>
 <%--                <div class="single-shop-product">--%>
 <%--                    <div class="product-upper">--%>
 <%--                        <img src="<%=product.getImage()%>" alt="" height="195" width="243">--%>
-<%--                    </div>--%>
-<%--                    <h2><a href="?id=<%=product.getId()%>"><%=product.getName()%></a></h2>--%>
-<%--                    <div class="product-carousel-price">--%>
-<%--                        <ins>€<%=String.format("%.2f",product.getPrice())%></ins> <del></del>--%>
-<%--                    </div>--%>
-
-<%--                    <div class="product-option-shop">--%>
-<%--                        <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow" href="">Add to cart</a>--%>
-<%--                    </div>--%>
-<%--                </div>--%>
-<%--            </div>--%>
-<%--            <div class="col-md-3 col-sm-6">--%>
-<%--                <div class="single-shop-product">--%>
-<%--                    <div class="product-upper">--%>
-<%--                        <img src="<%=product.getImage()%>" alt="" height="195" width="243">--%>
-<%--                    </div>--%>
-<%--                    <h2><a href="?id=<%=product.getId()%>"><%=product.getName()%></a></h2>--%>
-<%--                    <div class="product-carousel-price">--%>
-<%--                        <ins>€<%=String.format("%.2f",product.getPrice())%></ins> <del></del>--%>
-<%--                    </div>--%>
-<%--                    <br>--%>
-<%--                    <div class="product-option-shop">--%>
-<%--                        <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow" href="">Add to cart</a>--%>
-<%--                    </div>--%>
-<%--                </div>--%>
-<%--            </div>--%>
-<%--            <div class="col-md-3 col-sm-6">--%>
-<%--                <div class="single-shop-product">--%>
-<%--                    <div class="product-upper">--%>
-<%--                       <img src="<%=product.getImage()%>" alt="" height="195" width="243">--%>
 <%--                    </div>--%>
 <%--                    <h2><a href="?id=<%=product.getId()%>"><%=product.getName()%></a></h2>--%>
 <%--                    <div class="product-carousel-price">--%>
@@ -274,15 +266,42 @@ URL: https://www./CellsHouse/
 <%--                    <div class="product-carousel-price">--%>
 <%--                        <ins>€<%=String.format("%.2f",product.getPrice())%></ins> <del></del>--%>
 <%--                    </div>--%>
-<%--                    <br>--%>
-<%--                    <br>--%>
-<%--                    <br>--%>
-<%--                    <br>--%>
 <%--                    <div class="product-option-shop">--%>
 <%--                        <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow" href="">Add to cart</a>--%>
 <%--                    </div>--%>
 <%--                </div>--%>
 <%--            </div>--%>
+<%--            <div class="col-md-3 col-sm-6">--%>
+<%--                <div class="single-shop-product">--%>
+<%--                    <div class="product-upper">--%>
+<%--                       <img src="<%=product.getImage()%>" alt="" height="195" width="243">--%>
+<%--                    </div>--%>
+<%--                    <h2><a href="?id=<%=product.getId()%>"><%=product.getName()%></a></h2>--%>
+<%--                    <div class="product-carousel-price">--%>
+<%--                        <ins>€<%=String.format("%.2f",product.getPrice())%></ins> <del></del>--%>
+<%--                    </div>--%>
+
+<%--                    <div class="product-option-shop">--%>
+<%--                        <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow" href="">Add to cart</a>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
+<%--            </div>--%>
+<%--            <div class="col-md-3 col-sm-6">--%>
+<%--                <div class="single-shop-product">--%>
+<%--                    <div class="product-upper">--%>
+<%--                        <img src="<%=product.getImage()%>" alt="" height="195" width="243">--%>
+<%--                    </div>--%>
+<%--                    <h2><a href="?id=<%=product.getId()%>"><%=product.getName()%></a></h2>--%>
+<%--                    <div class="product-carousel-price">--%>
+<%--                        <ins>€<%=String.format("%.2f",product.getPrice())%></ins> <del></del>--%>
+<%--                    </div>--%>
+<%--                    <div class="product-option-shop">--%>
+<%--                        <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow" href="">Add to cart</a>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
+<%--            </div>--%>
+                </div>
+                <div class="row">
 <%--            <div class="col-md-3 col-sm-6">--%>
 <%--                <div class="single-shop-product">--%>
 <%--                    <div class="product-upper">--%>
@@ -337,12 +356,12 @@ URL: https://www./CellsHouse/
 <%--                    <div class="product-carousel-price">--%>
 <%--                        <ins>€<%=String.format("%.2f",product.getPrice())%></ins> <del></del>--%>
 <%--                    </div>--%>
-<%--                    <br>--%>
 <%--                    <div class="product-option-shop">--%>
 <%--                        <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow" href="">Add to cart</a>--%>
 <%--                    </div>--%>
 <%--                </div>--%>
 <%--            </div>--%>
+                </div>
        </div>
 
         <div class="row">

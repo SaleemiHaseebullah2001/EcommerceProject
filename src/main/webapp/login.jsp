@@ -40,8 +40,8 @@
             <div class="col-md-8">
                 <div class="user-menu">
                     <ul>
-                        <li><a href="profile.jsp"><i class="fa fa-user"></i> My Account</a></li>
-                        <li><a href="#"><i class="fa fa-heart"></i> Wishlist</a></li>
+                        <li><a href="profile"><i class="fa fa-user"></i> My Account</a></li>
+
                         <li><a href="cart.jsp"><i class="fa fa-user"></i> My Cart</a></li>
                         <li><a href="checkout.jsp"><i class="fa fa-user"></i> Checkout</a></li>
                         <li><a href="login.jsp"><i class="fa fa-user"></i> Login</a></li>
@@ -84,12 +84,6 @@
                     <h1><a href="index.jsp"><img src="img/Cells_House_LogoWeb.png" alt=""></a></h1>
                 </div>
             </div>
-
-            <div class="col-sm-6">
-                <div class="shopping-item">
-                    <a href="cart.jsp">Cart - <span class="cart-amunt">$100</span> <i class="fa fa-shopping-cart"></i> <span class="product-count">5</span></a>
-                </div>
-            </div>
         </div>
     </div>
 </div> <!-- End site branding area -->
@@ -112,7 +106,7 @@
 
                     <li><a href="cart.jsp">Cart</a></li>
                     <!--<li><a href="checkout.jsp" >Checkout</a></li> -->
-                    <li><a href="#">Category</a></li>
+
                     <li><a href="contact.jsp">Contact</a></li>
                 </ul>
             </div>
@@ -133,7 +127,7 @@
         <input type="password" id="login-password" placeholder="Enter Password" name="password" required>
 
         <label>
-            <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me <br>
+            <input type="checkbox" checked="checked" name="remember" onclick="myFunction()" style="margin-bottom:15px"> Show Password <br>
             Don't have an Account?<a href="signup.jsp">Signup</a>
         </label>
 
@@ -276,6 +270,16 @@
         });
 
     });
+</script>
+<script>
+    function myFunction() {
+        var x = document.getElementById("login-password");
+        if (x.type === "password") {
+            x.type = "text";
+        } else {
+            x.type = "password";
+        }
+    }
 </script>
 </body>
 </html>

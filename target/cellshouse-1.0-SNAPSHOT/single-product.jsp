@@ -1,5 +1,8 @@
-<%@ page import="java.util.List" %>
-<%@ page import="com.example.cellshouse.Model.Product" %><%--
+        <%@ page import="java.util.List" %>
+<%@ page import="com.example.cellshouse.Model.Product" %>
+<%@ page import="com.example.cellshouse.Model.Login" %>
+<%@ page import="com.example.cellshouse.Model.cart_item" %>
+<%@ page import="java.util.ArrayList" %><%--
   Created by IntelliJ IDEA.
   User: mehar
   Date: 05/01/2022
@@ -52,10 +55,20 @@ URL: https://www./CellsHouse/
         <div class="user-menu">
           <ul>
             <li><a href="profile.jsp"><i class="fa fa-user"></i> My Account</a></li>
-            <li><a href="#"><i class="fa fa-heart"></i> Wishlist</a></li>
+
             <li><a href="cart.jsp"><i class="fa fa-user"></i> My Cart</a></li>
             <li><a href="checkout.jsp"><i class="fa fa-user"></i> Checkout</a></li>
-            <li><a href="#"><i class="fa fa-user"></i> Login</a></li>
+            <%
+              Login user = (Login) session.getAttribute("user");
+              if (user == null) {
+            %>
+                        <li><a href="login.jsp"><i class="fa fa-user"></i> Login</a></li>
+                        <% } else {
+                        %>
+                        <li><a href="logout"><i class="fa fa-user"></i> Logout</a></li>
+                        <% }%>
+
+                        <a href=""> ${sessionScope.user}</a>
           </ul>
         </div>
       </div>
@@ -96,9 +109,20 @@ URL: https://www./CellsHouse/
         </div>
       </div>
 
+      <%
+        double totalOfSubtotal = 0.00;
+        List<cart_item> cart = new ArrayList<>();
+        if (session.getAttribute("cart") != null) {
+          cart = (List<cart_item>) session.getAttribute("cart");
+
+          for (cart_item item : cart) {
+            totalOfSubtotal += item.getProduct().getPrice() * item.getQuantity();
+          }
+        }
+      %>
       <div class="col-sm-6">
         <div class="shopping-item">
-          <a href="cart.jsp">Cart - <span class="cart-amunt">$100</span> <i class="fa fa-shopping-cart"></i> <span class="product-count">5</span></a>
+          <a href="cart.jsp">Cart - <span class="cart-amunt">€<%=String.format("%.2f", totalOfSubtotal)%></span> <i class="fa fa-shopping-cart"></i> <span class="product-count"><%=cart.size()%></span></a>
         </div>
       </div>
     </div>
@@ -122,7 +146,7 @@ URL: https://www./CellsHouse/
           <li><a href="<%=request.getContextPath()%>/shop">Shop page</a></li>
           <li><a href="cart.jsp">Cart</a></li>
           <!--<li><a href="checkout.jsp" >Checkout</a></li> -->
-          <li><a href="#">Category</a></li>
+
           <li><a href="contact.jsp">Contact</a></li>
         </ul>
       </div>
@@ -231,7 +255,7 @@ URL: https://www./CellsHouse/
               <div class="product-inner">
                 <h2 class="product-name"><%=product.getName()%></h2>
                 <div class="product-inner-price">
-                  <ins>€<%=String.format("%.2f",product.getPrice())%></ins>
+                  <ins>€<%=String.format("%.2f", product.getPrice())%></ins>
                 </div>
 
                 <form action="add_item" class="cart">
@@ -241,7 +265,7 @@ URL: https://www./CellsHouse/
                   </div>
                   <button class="add_to_cart_button" type="submit">Add to cart</button>
 
-                  <p><%= request.getAttribute("message") == null ? "": request.getAttribute("message") %></p>
+                  <p><%=request.getAttribute("message") == null ? "" : request.getAttribute("message")%></p>
                 </form>
 
                 <!--div class="product-inner-category">
@@ -289,95 +313,103 @@ URL: https://www./CellsHouse/
           <div class="related-products-wrapper">
             <h2 class="related-products-title">Related Products</h2>
             <div class="related-products-carousel">
+              <%
+                List<Product> products = (List) request.getAttribute("productlist");
+              %>
+              <%
+                for (Product pd : products) {
+              %>
+
               <div class="single-product">
                 <div class="product-f-image">
-                  <img src="img/product-6.jpg" alt="">
+                  <img src="<%=pd.getImage()%>" width="145" height="200" alt="">
+
                   <div class="product-hover">
-                    <a href="" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                    <a href="" class="view-details-link"><i class="fa fa-link"></i> See details</a>
+                    <a href="single-product?id=<%=pd.getId()%>" class="view-details-link"> <i class="fa fa-link"></i>See details</a>
                   </div>
                 </div>
-
-                <h2><a href="">Bla Bla</a></h2>
+                <h2><a href=""><%=pd.getName()%></a></h2>
 
                 <div class="product-carousel-price">
-                  <ins>€555</ins> <del></del>
-                </div>
-              </div>
-              <div class="single-product">
-                <div class="product-f-image">
-                  <img src="img/product-2.jpg" alt="">
-                  <div class="product-hover">
-                    <a href="" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                    <a href="" class="view-details-link"><i class="fa fa-link"></i> See details</a>
-                  </div>
-                </div>
-
-                <h2><a href="">Apple new mac book 2015 March :P</a></h2>
-                <div class="product-carousel-price">
-                  <ins>$899.00</ins> <del>$999.00</del>
+                  <ins>€<%=String.format("%.2f", pd.getPrice())%></ins> <del></del>
                 </div>
               </div>
 
-              <div class="single-product">
-                <div class="product-f-image">
-                  <img src="img/product-3.jpg" alt="">
-                  <div class="product-hover">
-                    <a href="" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                    <a href="" class="view-details-link"><i class="fa fa-link"></i> See details</a>
-                  </div>
-                </div>
+                <%}%>
+<%--              <div class="single-product">--%>
+<%--                <div class="product-f-image">--%>
+<%--                  <img src="https://res.cloudinary.com/cellshouse/image/upload/v1644402728/samsung_s20_fe_p1ilw4.jpg" width="139" height="160" alt="">--%>
+<%--                  <div class="product-hover">--%>
+<%--                    <a href="" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>--%>
+<%--                    <a href="" class="view-details-link"><i class="fa fa-link"></i> See details</a>--%>
+<%--                  </div>--%>
+<%--                </div>--%>
 
-                <h2><a href="">Apple new i phone 6</a></h2>
+<%--                <h2><a href="">Apple new mac book 2015 March :P</a></h2>--%>
+<%--                <div class="product-carousel-price">--%>
+<%--                  <ins>$899.00</ins> <del>$999.00</del>--%>
+<%--                </div>--%>
+<%--              </div>--%>
 
-                <div class="product-carousel-price">
-                  <ins>$400.00</ins> <del>$425.00</del>
-                </div>
-              </div>
-              <div class="single-product">
-                <div class="product-f-image">
-                  <img src="img/product-4.jpg" alt="">
-                  <div class="product-hover">
-                    <a href="" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                    <a href="" class="view-details-link"><i class="fa fa-link"></i> See details</a>
-                  </div>
-                </div>
+<%--              <div class="single-product">--%>
+<%--                <div class="product-f-image">--%>
+<%--                  <img src="img/product-3.jpg" alt="">--%>
+<%--                  <div class="product-hover">--%>
+<%--                    <a href="" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>--%>
+<%--                    <a href="" class="view-details-link"><i class="fa fa-link"></i> See details</a>--%>
+<%--                  </div>--%>
+<%--                </div>--%>
 
-                <h2><a href="">Sony playstation microsoft</a></h2>
+<%--                <h2><a href="">Apple new i phone 6</a></h2>--%>
 
-                <div class="product-carousel-price">
-                  <ins>$200.00</ins> <del>$225.00</del>
-                </div>
-              </div>
-              <div class="single-product">
-                <div class="product-f-image">
-                  <img src="img/product-5.jpg" alt="">
-                  <div class="product-hover">
-                    <a href="" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                    <a href="" class="view-details-link"><i class="fa fa-link"></i> See details</a>
-                  </div>
-                </div>
+<%--                <div class="product-carousel-price">--%>
+<%--                  <ins>$400.00</ins> <del>$425.00</del>--%>
+<%--                </div>--%>
+<%--              </div>--%>
+<%--              <div class="single-product">--%>
+<%--                <div class="product-f-image">--%>
+<%--                  <img src="img/product-4.jpg" alt="">--%>
+<%--                  <div class="product-hover">--%>
+<%--                    <a href="" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>--%>
+<%--                    <a href="" class="view-details-link"><i class="fa fa-link"></i> See details</a>--%>
+<%--                  </div>--%>
+<%--                </div>--%>
 
-                <h2><a href="">Sony Smart Air Condtion</a></h2>
+<%--                <h2><a href="">Sony playstation microsoft</a></h2>--%>
 
-                <div class="product-carousel-price">
-                  <ins>$1200.00</ins> <del>$1355.00</del>
-                </div>
-              </div>
-              <div class="single-product">
-                <div class="product-f-image">
-                  <img src="img/product-6.jpg" alt="">
-                  <div class="product-hover">
-                    <a href="" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                    <a href="" class="view-details-link"><i class="fa fa-link"></i> See details</a>
-                  </div>
-                </div>
+<%--                <div class="product-carousel-price">--%>
+<%--                  <ins>$200.00</ins> <del>$225.00</del>--%>
+<%--                </div>--%>
+<%--              </div>--%>
+<%--              <div class="single-product">--%>
+<%--                <div class="product-f-image">--%>
+<%--                  <img src="img/product-5.jpg" alt="">--%>
+<%--                  <div class="product-hover">--%>
+<%--                    <a href="" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>--%>
+<%--                    <a href="" class="view-details-link"><i class="fa fa-link"></i> See details</a>--%>
+<%--                  </div>--%>
+<%--                </div>--%>
 
-                <h2><a href="">Samsung gallaxy note 4</a></h2>
+<%--                <h2><a href="">Sony Smart Air Condtion</a></h2>--%>
 
-                <div class="product-carousel-price">
-                  <ins>$400.00</ins>
-                </div>
+<%--                <div class="product-carousel-price">--%>
+<%--                  <ins>$1200.00</ins> <del>$1355.00</del>--%>
+<%--                </div>--%>
+<%--              </div>--%>
+<%--              <div class="single-product">--%>
+<%--                <div class="product-f-image">--%>
+<%--                  <img src="img/product-6.jpg" alt="">--%>
+<%--                  <div class="product-hover">--%>
+<%--                    <a href="" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>--%>
+<%--                    <a href="" class="view-details-link"><i class="fa fa-link"></i> See details</a>--%>
+<%--                  </div>--%>
+<%--                </div>--%>
+
+<%--                <h2><a href="">Samsung gallaxy note 4</a></h2>--%>
+
+<%--                <div class="product-carousel-price">--%>
+<%--                  <ins>$400.00</ins>--%>
+<%--                </div>--%>
               </div>
             </div>
           </div>
